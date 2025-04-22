@@ -15,3 +15,7 @@ docker run --name docker-postgres \
 -d \
 postgres
 ```
+
+## Java Run
+
+1. Run `.gradlew bootRun`
