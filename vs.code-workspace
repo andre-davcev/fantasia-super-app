@@ -21,6 +21,7 @@
       "statusBarItem.remoteForeground": "#e7e7e7",
       "commandCenter.border": "#e7e7e799"
     },
-    "peacock.color": "#03327E"
+    "peacock.color": "#03327E",
+    "nxConsole.nxWorkspacePath": "angular"
   }
 }
