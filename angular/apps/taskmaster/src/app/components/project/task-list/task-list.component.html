@@ -1,49 +1,46 @@
-<div>
-  <div>
+<div class="task-list-container">
+  <div class="heading">
     <h3>Tasks</h3>
-    <div>In Progress Completed</div>
+    <div>
+      <span class="status-dot in-progress">In Progress</span>
+      <span class="status-dot completed">Completed</span>
+    </div>
   </div>
   <table>
     <thead>
       <tr>
-        Task
-      </tr>
-      <tr>
-        Status
-      </tr>
-      <tr>
-        Due Date
+        <th>Task</th>
+        <th>Status</th>
+        <th>Due Date</th>
       </tr>
     </thead>
     <tbody>
+      @for (task of tasks; track task.id) {
       <tr>
         <td>
-          <label>
-            <input type="checkbox" aria-label="Select task" /> Design wireframe
+          <label [class.completed-task]="task.completed">
+            <input
+              type="checkbox"
+              aria-label="Select task"
+              [checked]="task.completed"
+              (click)="handleCheckbox(task.id)"
+            />
+            {{ task.name }}
           </label>
         </td>
-        <td>In Progress</td>
-        <td>2024-10-01</td>
-      </tr>
-      <tr>
         <td>
-          <label>
-            <input type="checkbox" aria-label="Select task" checked /> Develop
-            frontend
-          </label>
+          <span
+            [class.completed]="task.completed"
+            [class.in-progress]="!task.completed"
+            >{{ task.completed ? 'Completed' : 'In Progress' }}</span
+          >
         </td>
-        <td>In Progress</td>
-        <td>2024-10-01</td>
+        <td class="due-date">{{ task.dueDate | date : 'YYYY-MM-dd' }}</td>
       </tr>
-      <tr>
-        <td>
-          <label>
-            <input type="checkbox" aria-label="Select task" /> Develop backend
-          </label>
-        </td>
-        <td>In Progress</td>
-        <td>2024-11-01</td>
-      </tr>
+      }
     </tbody>
   </table>
+  <div class="button-container">
+    <button>Add New Task</button>
+  </div>
 </div>
