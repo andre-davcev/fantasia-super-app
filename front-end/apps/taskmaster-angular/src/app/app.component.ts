@@ -9,5 +9,5 @@ import { ProjectComponent } from './components/project/project.component';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'taskmaster';
+  title = 'taskmaster-angular';
 }

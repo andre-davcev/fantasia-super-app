@@ -1,6 +1,6 @@
 import { getGreeting } from '../support/app.po';
 
-describe('taskmaster-e2e', () => {
+describe('taskmaster-angular-e2e', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {
