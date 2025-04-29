@@ -7,10 +7,10 @@ export default defineConfig({
     ...nxE2EPreset(__filename, {
       cypressDir: 'src',
       webServerCommands: {
-        default: 'nx run taskmaster:serve:development',
-        production: 'nx run taskmaster:serve:production',
+        default: 'nx run taskmaster-angular:serve:development',
+        production: 'nx run taskmaster-angular:serve:production',
       },
-      ciWebServerCommand: 'nx run taskmaster:serve-static',
+      ciWebServerCommand: 'nx run taskmaster-angular:serve-static',
     }),
     baseUrl: 'http://localhost:4200',
   },
