@@ -3,17 +3,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { Task } from '../../../models';
 import { TaskService } from '../../../services';
+import { TaskFormComponent } from '../task-form/task-form.component';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [CommonModule, DatePipe],
+  imports: [CommonModule, DatePipe, TaskFormComponent],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskListComponent {
   public tasks: Array<Task> = [];
+  public showModal: boolean = false;
 
   constructor(private taskService: TaskService) {
     this.tasks = this.taskService.getAll();
