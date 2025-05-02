@@ -1,64 +1,33 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Task } from '../../models';
+
+const BASE_URL: string = 'http://localhost:8080/api';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  private tasks: Array<Task> = [
-    {
-      id: 1,
-      name: 'Design wireframe',
-      description: 'Setup a wireframe',
-      completed: false,
-      dueDate: new Date('2023-07-31'),
-      project: 1,
-    },
-    {
-      id: 2,
-      name: 'Develop frontend',
-      description: 'Setup frontend',
-      completed: true,
-      dueDate: new Date('2023-06-15'),
-      project: 1,
-    },
-    {
-      id: 3,
-      name: 'Develop backend',
-      description: 'Setup backend',
-      completed: false,
-      dueDate: new Date('2023-07-21'),
-      project: 1,
-    },
-  ];
+  constructor(private http: HttpClient) {}
 
-  public getAll(): Array<Task> {
-    return this.tasks;
+  public getAll(): Observable<Array<Task>> {
+    return this.http.get<Array<Task>>(`${BASE_URL}/tasks`);
   }
 
-  public create(task: Task): Array<Task> {
-    this.tasks.push(task);
-
-    return this.tasks;
+  public create(task: Task): Observable<Array<Task>> {
+    const { id: _, project: __, ...partial } = task;
+    return this.http.post<Array<Task>>(`${BASE_URL}/tasks`, partial);
   }
 
-  public update(taskNew: Task) {
-    const taskIndex: number = this.tasks.findIndex(
-      (task: Task) => task.id === taskNew.id
+  public update(taskNew: Task): Observable<Array<Task>> {
+    return this.http.put<Array<Task>>(
+      `${BASE_URL}/tasks/${taskNew.id}`,
+      taskNew
     );
-
-    this.tasks[taskIndex] = taskNew;
-
-    return this.tasks;
   }
 
-  public delete(id: number): Array<Task> {
-    const taskIndex: number = this.tasks.findIndex(
-      (task: Task) => task.id === id
-    );
-
-    this.tasks.splice(taskIndex, 1);
-
-    return this.tasks;
+  public delete(id: number): Observable<Array<Task>> {
+    return this.http.delete<Array<Task>>(`${BASE_URL}/tasks/${id}`);
   }
 }

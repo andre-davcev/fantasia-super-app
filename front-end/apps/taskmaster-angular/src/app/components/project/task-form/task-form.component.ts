@@ -15,6 +15,7 @@ import {
   Validators,
 } from '@angular/forms';
 
+import { Observable } from 'rxjs';
 import { Task } from '../../../models';
 import { TaskService } from '../../../services';
 import { FormType } from '../shared';
@@ -79,13 +80,12 @@ export class TaskFormComponent implements OnChanges {
             : false,
       };
 
-      if (this.formType === FormType.Create) {
-        this.taskService.create(taskNew);
-      } else {
-        this.taskService.update(taskNew);
-      }
+      const operation$: Observable<Array<Task>> =
+        this.formType === FormType.Create
+          ? this.taskService.create(taskNew)
+          : this.taskService.update(taskNew);
 
-      this.closePanel.emit(TaskFormSubmit.Submit);
+      operation$.subscribe(() => this.closePanel.emit(TaskFormSubmit.Submit));
     }
   }
 

@@ -1,9 +1,11 @@
-import { CommonModule, DatePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { AsyncPipe, CommonModule, DatePipe } from '@angular/common';
+import { Component } from '@angular/core';
 
+import { Observable } from 'rxjs';
 import { Task } from '../../../models';
 import { TaskService } from '../../../services';
 import { FormType } from '../shared/enums';
+import { TaskFormSubmit } from '../task-form';
 import { TaskFormComponent } from '../task-form/task-form.component';
 
 const TASK_EMPTY: Task = {
@@ -17,31 +19,29 @@ const TASK_EMPTY: Task = {
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [CommonModule, DatePipe, TaskFormComponent],
+  imports: [CommonModule, DatePipe, TaskFormComponent, AsyncPipe],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskListComponent {
   public tasks: Array<Task> = [];
+  public tasks$!: Observable<Array<Task>>;
   public showModal: boolean = false;
   public taskSelected: Task = TASK_EMPTY;
   public formType: FormType = FormType.Create;
 
   constructor(private taskService: TaskService) {
-    this.tasks = this.taskService.getAll();
+    this.getTasks();
   }
 
-  public handleCheckbox(id: number): void {
-    const taskIndex: number = this.tasks.findIndex(
-      (task: Task) => task.id === id
-    );
+  public handleCheckbox(task: Task): void {
+    task.completed = !task.completed;
 
-    const updated: Task = this.tasks[taskIndex];
+    this.taskService.update(task).subscribe(() => this.getTasks());
+  }
 
-    updated.completed = !updated.completed;
-
-    this.tasks = this.taskService.update(updated);
+  public getTasks(): void {
+    this.tasks$ = this.taskService.getAll();
   }
 
   public updateTask(task: Task) {
@@ -51,6 +51,14 @@ export class TaskListComponent {
   }
 
   public deleteTask(id: number): void {
-    this.tasks = this.taskService.delete(id);
+    this.taskService.delete(id).subscribe(() => this.getTasks());
+  }
+
+  public handleModalClose(type: TaskFormSubmit): void {
+    if (type === TaskFormSubmit.Submit) {
+      this.getTasks();
+    }
+
+    this.showModal = false;
   }
 }
