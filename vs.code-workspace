@@ -22,6 +22,15 @@
       "commandCenter.border": "#e7e7e799"
     },
     "peacock.color": "#03327E",
-    "nxConsole.nxWorkspacePath": "front-end"
+    "nxConsole.nxWorkspacePath": "front-end",
+    "rest-client.environmentVariables": {
+      "$shared": {
+        "version": "v1"
+      },
+      "local": {
+        "host": "http://localhost:8080",
+        "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmRyZS5kYXZjZXZAZ21haWwuY29tIiwiaWF0IjoxNzQ2NjU0Njk5LCJleHAiOjE3NzgxOTA2OTl9._LYWH-o5eARB51jQMneeDNRmj8O7tLa9vZI6_4Kln2Y"
+      }
+    }
   }
 }
