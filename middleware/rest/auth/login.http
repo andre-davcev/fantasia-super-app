@@ -1,0 +1,7 @@
+POST {{host}}/api/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "andre.davcev@gmail.com",
+    "password": "password1234"
+}
