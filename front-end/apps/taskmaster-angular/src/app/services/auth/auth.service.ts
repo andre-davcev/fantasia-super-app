@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { StorageService } from '../storage/storage.service';
 import {
@@ -25,34 +25,17 @@ export class AuthService {
   public login(
     request: AuthenticationRequest
   ): Observable<AuthenticationResponse> {
-    return this.http
-      .post<AuthenticationResponse>(`${this.apiUrl}/login`, request)
-      .pipe(
-        tap((response: AuthenticationResponse) => {
-          this.storage.setToken(response.token);
-          this.router.navigate(['/']);
-        }),
-        catchError((error) =>
-          throwError(() => new Error('Incorrect login, please try again.'))
-        )
-      );
+    return this.http.post<AuthenticationResponse>(
+      `${this.apiUrl}/login`,
+      request
+    );
   }
 
   public register(request: RegisterRequest) {
-    return this.http
-      .post<AuthenticationResponse>(`${this.apiUrl}/register`, request)
-      .pipe(
-        tap((response: AuthenticationResponse) => {
-          this.storage.setToken(response.token);
-          this.router.navigate(['/']);
-        }),
-        catchError((error) =>
-          throwError(
-            () =>
-              new Error('Incorrect registration information, please try again.')
-          )
-        )
-      );
+    return this.http.post<AuthenticationResponse>(
+      `${this.apiUrl}/register`,
+      request
+    );
   }
 
   public logout(): void {
