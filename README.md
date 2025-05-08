@@ -18,4 +18,10 @@ postgres
 
 ## Java Run
 
-1. Run `.gradlew bootRun`
+1. Run `cd middleware/spring-boot`
+2. Run `.gradlew bootRun`
+
+## Angular Run
+
+1. Run `cd front-end`
+2. Run `npx nx serve taskmaster-angular`

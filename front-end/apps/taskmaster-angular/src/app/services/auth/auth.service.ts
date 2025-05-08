@@ -29,7 +29,7 @@ export class AuthService {
       .post<AuthenticationResponse>(`${this.apiUrl}/login`, request)
       .pipe(
         tap((response: AuthenticationResponse) => {
-          this.storage.setToken(response);
+          this.storage.setToken(response.token);
           this.router.navigate(['/']);
         }),
         catchError((error) =>
