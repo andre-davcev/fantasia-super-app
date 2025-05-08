@@ -6,11 +6,12 @@ import com.andredavcev.taskmaster.controller.http.RegisterRequest;
 import com.andredavcev.taskmaster.entity.User;
 import com.andredavcev.taskmaster.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Service
 @RequiredArgsConstructor
@@ -19,6 +20,8 @@ public class AuthService {
     private final UserRepository repository;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+
+    private static final Logger logger = LoggerFactory.getLogger(AuthService.class);
 
     public AuthenticationResponse register(RegisterRequest request) {
         User user = User
@@ -47,6 +50,7 @@ public class AuthService {
 
         User user = repository.findByEmail(request.getEmail()).orElseThrow();
         String jwtToken = jwtService.generateToken(user);
+        
         return AuthenticationResponse
                 .builder()
                 .token(jwtToken)
