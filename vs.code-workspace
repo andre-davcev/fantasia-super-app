@@ -29,7 +29,7 @@
       },
       "local": {
         "host": "http://localhost:8080",
-        "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmRyZS5kYXZjZXZAZ21haWwuY29tIiwiaWF0IjoxNzQ2NjU0Njk5LCJleHAiOjE3NzgxOTA2OTl9._LYWH-o5eARB51jQMneeDNRmj8O7tLa9vZI6_4Kln2Y"
+        "token": ""
       }
     }
   }
