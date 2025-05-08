@@ -1,5 +1,5 @@
 package com.andredavcev.taskmaster.entity;
 
-public enum Role {
+public enum     Role {
     USER, ADMIN, MANAGER
 }
