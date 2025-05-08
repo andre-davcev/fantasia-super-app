@@ -50,7 +50,7 @@ public class AuthService {
 
         User user = repository.findByEmail(request.getEmail()).orElseThrow();
         String jwtToken = jwtService.generateToken(user);
-        
+
         return AuthenticationResponse
                 .builder()
                 .token(jwtToken)
