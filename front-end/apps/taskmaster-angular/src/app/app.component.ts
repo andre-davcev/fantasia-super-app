@@ -1,15 +1,21 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 
-import { ProjectComponent } from './components/project/project.component';
+import { AuthService } from './services';
 
 @Component({
   standalone: true,
-  imports: [ProjectComponent, RouterModule],
+  imports: [RouterModule, RouterLink],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'taskmaster-angular';
+  title = 'Taskmaster (Angular)';
+
+  constructor(public auth: AuthService) {}
+
+  public logout(): void {
+    this.auth.logout();
+  }
 }
