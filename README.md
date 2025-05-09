@@ -21,6 +21,13 @@ postgres
 1. Run `cd middleware/spring-boot`
 2. Run `.gradlew bootRun`
 
+## Java Package
+
+1. Run `cd middleware/spring-boot`
+2. Run `./gradlew shadowJar`
+3. Find FAT jar in `middleware/spring-boot/build/libs/taskmaster-<version>-SNAPSHOT-all.jar`
+4. See [Shadow Gradle Plugin Documentation](https://gradleup.com/shadow/) for more details
+
 ## Angular Run
 
 1. Run `cd front-end`
