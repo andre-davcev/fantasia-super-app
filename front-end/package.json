@@ -8,8 +8,10 @@
     "postgres-stop": "docker stop docker-postgres",
     "boot-run": "cd ../middleware/spring-boot && ./gradlew bootRun",
     "boot-package": "cd ../middleware/spring-boot && ./gradlew shadowJar",
-    "java-run": "java -jar ../middleware/spring-boot/build/libs/taskmaster-0.0.1-SNAPSHOT-all.jar",
-    "angular-serve": "npx nx serve taskmaster-angular"
+    "boot-image": "cd ../middleware/spring-boot && docker build -t taskmaster-spring-boot .",
+    "java-run": "java -jar ../middleware/spring-boot/build/libs/*.jar",
+    "angular-serve": "npx nx serve taskmaster-angular",
+    "docker-run": "cd ../middleware/spring-boot && docker-compose up -d"
   },
   "private": true,
   "dependencies": {
