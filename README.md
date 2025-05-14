@@ -33,3 +33,16 @@ postgres
 
 1. Run `cd front-end`
 2. Run `npx nx serve taskmaster-angular`
+
+## Scripts
+
+1. You can run most of the above commands via npm scripts
+2. From the root directory `npm run --prefix front-end <script-name>`
+
+## Script List
+
+- Create Postgres Container: `postgres-create`
+- Start Postgres Container: `postgres-start`
+- Stop Postgres Container: `postgres-stop`
+- Run Spring Boot API: `boot-run`
+- Run Angular Front End: `angular-serve`
