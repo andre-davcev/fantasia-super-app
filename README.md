@@ -2,48 +2,27 @@
 
 Spring Boot application setup with Postgres backend and Angular front end
 
-## Java Setup
+## Setup
 
-1. Pull and run official docker-postgress image
+1. [Download](https://www.docker.com/products/docker-desktop/) Docker Desktop
+2. [Download](https://nodejs.org/en/download) Node.js
+3. Pull and run official `docker-postgres` image: `npm run --prefix front-end postgres-download`
 
-```
-docker run --name docker-postgres \
--p 5432:5432 \
--e POSTGRES_USER=postgres \
--e POSTGRES_PASSWORD=postgres \
--e POSTGRES_DB=postgres \
--d \
-postgres
-```
+## Local Development
 
-## Java Run
+1. Start local postgres container: `npm run --prefix front-end postgres-start`
+2. Run Java api: `npm run --prefix front-end boot-run`
+3. Run Angular front end: `npm run --prefix front-end angular-serve`
+4. When finished shutdown postgres: `npm run --prefix front-end postgres-stop`
 
-1. Run `cd middleware/spring-boot`
-2. Run `.gradlew bootRun`
+## Package API and run as Jar
 
-## Java Package
+1. Start local postgres container: `npm run --prefix front-end postgres-start`
+2. Package api as jar: `npm run --prefix front-end boot-package`
+3. Run api as jar: `npm run --prefix front-end java-run`
 
-1. Run `cd middleware/spring-boot`
-2. Run `./gradlew shadowJar`
-3. Find FAT jar in `middleware/spring-boot/build/libs/taskmaster-<version>-SNAPSHOT-all.jar`
-4. Run java jar `java -jar ./build/libs/taskmaster-<version>-SNAPSHOT-all.jar`
-5. See [Shadow Gradle Plugin Documentation](https://gradleup.com/shadow/) for more details
+## Containerize Database/API & Run
 
-## Angular Run
-
-1. Run `cd front-end`
-2. Run `npx nx serve taskmaster-angular`
-
-## Scripts
-
-1. You can run most of the above commands via npm scripts
-2. From the root directory `npm run --prefix front-end <script-name>`
-
-## Script List
-
-- Postgres Container Create: `postgres-create`
-- Postgres Container Start: `postgres-start`
-- Postgres Container Stop: `postgres-stop`
-- Spring Boot API Run: `boot-run`
-- Spring Boot API Package: `boot-package`
-- Angular Front End Run: `angular-serve`
+1. Build API image: `npm run --prefix front-end boot-image`
+2. Run Docker compose: `npm run --prefix front-end docker-run`
+3. Run Angular front end: `npm run --prefix front-end angular-serve`
