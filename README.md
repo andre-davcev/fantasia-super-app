@@ -41,8 +41,9 @@ postgres
 
 ## Script List
 
-- Create Postgres Container: `postgres-create`
-- Start Postgres Container: `postgres-start`
-- Stop Postgres Container: `postgres-stop`
-- Run Spring Boot API: `boot-run`
-- Run Angular Front End: `angular-serve`
+- Postgres Container Create: `postgres-create`
+- Postgres Container Start: `postgres-start`
+- Postgres Container Stop: `postgres-stop`
+- Spring Boot API Run: `boot-run`
+- Spring Boot API Package: `boot-package`
+- Angular Front End Run: `angular-serve`
