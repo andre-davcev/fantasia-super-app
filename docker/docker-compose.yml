@@ -10,7 +10,9 @@ services:
     ports:
       - "5432:5432"
   app:
-    image: taskmaster-spring-boot
+    build:
+      context: ../middleware/spring-boot
+      dockerfile: Dockerfile
     container_name: taskmaster-api
     ports:
       - "8080:8080"
