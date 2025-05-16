@@ -22,7 +22,7 @@
       "commandCenter.border": "#e7e7e799"
     },
     "peacock.color": "#03327E",
-    "nxConsole.nxWorkspacePath": "front-end",
+    "nxConsole.nxWorkspacePath": "frontend",
     "rest-client.environmentVariables": {
       "$shared": {
         "version": "v1"
