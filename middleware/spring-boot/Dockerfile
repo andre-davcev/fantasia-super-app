@@ -1,4 +1,4 @@
-FROM amazoncorretto:21
+FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /app
 
@@ -6,7 +6,7 @@ COPY build/libs/*.jar app.jar
 
 RUN addgroup --system spring
 RUN adduser -S -s /bin/false -G spring spring
-RUN chown -R spring:spring /application
+RUN chown -R spring:spring /app
 USER spring
 
 EXPOSE 8080
