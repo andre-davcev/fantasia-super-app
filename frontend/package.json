@@ -9,7 +9,7 @@
     "boot-run": "cd ../middleware/spring-boot && ./gradlew bootRun",
     "boot-package": "cd ../middleware/spring-boot && ./gradlew shadowJar",
     "boot-image": "cd ../middleware/spring-boot && docker build -t taskmaster-spring-boot .",
-    "java-run": "java -jar ../middleware/spring-boot/build/libs/*.jar",
+    "boot-java-run": "java -jar ../middleware/spring-boot/build/libs/*.jar",
     "angular-serve": "npx nx serve taskmaster-angular",
     "docker-run": "cd ../docker && docker-compose --env-file .env-local up -d",
     "docker-stop": "cd ../docker && docker-compose down",
