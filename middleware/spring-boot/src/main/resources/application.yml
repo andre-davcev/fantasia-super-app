@@ -8,8 +8,14 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: postgres
-  
+
   # Align database schema with our code
   jpa:
     hibernate:
       ddl-auto: update
+
+logging:
+  level:
+    root: DEBUG
+    org.springframework.security: DEBUG
+    com.andredavcev.taskmaster: DEBUG
