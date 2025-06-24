@@ -19,14 +19,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfiguration {
     private final AuthenticationProvider authenticationProvider;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
-    private static final String[] WHITE_LIST_URLS = {"/api/auth/**"}; // Allow unregistered users to hit these endpoints
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable) // Not configured for form submission
                 .authorizeHttpRequests( // Allow all if not authorized
-                        req -> req.requestMatchers(WHITE_LIST_URLS)
+                        req -> req.requestMatchers("/api/auth/**")
                                 .permitAll()
                                 .anyRequest() // Other request should be authenticated
                                 .authenticated()
