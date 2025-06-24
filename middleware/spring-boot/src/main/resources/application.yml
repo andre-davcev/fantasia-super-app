@@ -16,6 +16,6 @@ spring:
 
 logging:
   level:
-    root: DEBUG
-    org.springframework.security: DEBUG
-    com.andredavcev.taskmaster: DEBUG
+    root: INFO
+    org.springframework.security: INFO
+    com.andredavcev.taskmaster: INFO
