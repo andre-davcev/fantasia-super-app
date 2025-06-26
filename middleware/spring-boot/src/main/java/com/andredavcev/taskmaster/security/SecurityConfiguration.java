@@ -11,6 +11,12 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @RequiredArgsConstructor
@@ -20,12 +26,13 @@ public class SecurityConfiguration {
     private final AuthenticationProvider authenticationProvider;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
+    private static final String[] WHITE_LIST_URLS = {"/api/auth/**"}; // Allow unregistered users to hit these endpoints
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable) // Not configured for form submission
                 .authorizeHttpRequests( // Allow all if not authorized
-                        req -> req.requestMatchers("/api/auth/**")
+                        req -> req.requestMatchers(WHITE_LIST_URLS)
                                 .permitAll()
                                 .anyRequest() // Other request should be authenticated
                                 .authenticated()
@@ -38,4 +45,6 @@ public class SecurityConfiguration {
 
         return http.build();
     }
+
+
 }
