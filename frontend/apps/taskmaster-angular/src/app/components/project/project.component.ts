@@ -21,7 +21,6 @@ export class ProjectComponent {
   public completed: number = 0;
 
   public completedChanged(completed: number): void {
-    console.log(completed);
     this.completed = completed;
   }
 }
