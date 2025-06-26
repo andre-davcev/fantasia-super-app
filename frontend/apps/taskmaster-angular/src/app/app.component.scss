@@ -59,3 +59,9 @@ nav ul li {
   max-width: 1200px;
   margin: 0 auto;
 }
+
+:host {
+  .c-title {
+    margin: 0.5rem 0;
+  }
+}

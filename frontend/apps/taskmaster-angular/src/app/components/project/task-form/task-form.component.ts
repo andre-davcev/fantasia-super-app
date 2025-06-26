@@ -74,6 +74,7 @@ export class TaskFormComponent implements OnChanges {
       const taskNew: Task = {
         ...this.taskForm.value,
         dueDate: new Date(this.taskForm.value.dueDate),
+
         completed:
           this.formType === FormType.Update
             ? this.taskForm.value.completed

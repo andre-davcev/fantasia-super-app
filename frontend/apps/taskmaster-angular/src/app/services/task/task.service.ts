@@ -21,9 +21,11 @@ export class TaskService {
   }
 
   public update(taskNew: Task): Observable<Array<Task>> {
+    const { project: _, ...partial } = taskNew;
+
     return this.http.put<Array<Task>>(
       `${BASE_URL}/tasks/${taskNew.id}`,
-      taskNew
+      partial
     );
   }
 

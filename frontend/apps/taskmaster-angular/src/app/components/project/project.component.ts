@@ -17,4 +17,11 @@ import { TaskListComponent } from './task-list/task-list.component';
   styleUrl: './project.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectComponent {}
+export class ProjectComponent {
+  public completed: number = 0;
+
+  public completedChanged(completed: number): void {
+    console.log(completed);
+    this.completed = completed;
+  }
+}
