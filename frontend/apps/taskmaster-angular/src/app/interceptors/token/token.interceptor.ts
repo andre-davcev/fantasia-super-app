@@ -11,8 +11,6 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
 
   const token: string | null = storage.getToken();
 
-  console.log({ token });
-
   if (token) {
     req = req.clone({
       setHeaders: {

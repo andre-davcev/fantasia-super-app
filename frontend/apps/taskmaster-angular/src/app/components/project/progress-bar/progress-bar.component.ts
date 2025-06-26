@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-progress-bar',
@@ -9,4 +9,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './progress-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProgressBarComponent {}
+export class ProgressBarComponent {
+  @Input()
+  public percent: number = 0;
+
+  public get percentFull(): number {
+    return this.percent * 100;
+  }
+}

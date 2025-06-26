@@ -1,5 +1,5 @@
 import { AsyncPipe, CommonModule, DatePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { Task } from '../../../models';
@@ -30,8 +30,13 @@ export class TaskListComponent {
   public taskSelected: Task = TASK_EMPTY;
   public formType: FormType = FormType.Create;
 
+  @Output()
+  public completed: EventEmitter<number> = new EventEmitter<number>();
+
   constructor(private taskService: TaskService) {
     this.getTasks();
+
+    this.completed.emit(0);
   }
 
   public handleCheckbox(task: Task): void {
@@ -42,6 +47,16 @@ export class TaskListComponent {
 
   public getTasks(): void {
     this.tasks$ = this.taskService.getAll();
+
+    this.tasks$.subscribe((tasks: Array<Task>) => {
+      const total: number = tasks.length;
+      const count: number = tasks.reduce(
+        (count: number, task: Task) => (count += task.completed ? 1 : 0),
+        0
+      );
+
+      this.completed.emit(total === 0 ? 0 : count / total);
+    });
   }
 
   public updateTask(task: Task) {
