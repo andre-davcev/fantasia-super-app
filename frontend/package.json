@@ -11,10 +11,12 @@
     "boot-package": "cd ../middleware/spring-boot && ./gradlew bootJar",
     "boot-image": "cd ../middleware/spring-boot && docker build -t taskmaster-spring-boot .",
     "angular-serve": "npx nx serve taskmaster-angular",
+    "docker-build": "cd ../docker && docker compose build",
     "docker-run": "cd ../docker && docker-compose --env-file .env-local up -d",
     "docker-stop": "cd ../docker && docker-compose down",
     "docker-shell-api": "docker exec -it taskmaster-api sh",
-    "docker-shell-db": "docker exec -it taskmaster-db sh"
+    "docker-shell-db": "docker exec -it taskmaster-db sh",
+    "docker-shell-fe": "docker exec -it taskmaster-fe sh"
   },
   "private": true,
   "dependencies": {

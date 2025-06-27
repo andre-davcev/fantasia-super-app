@@ -9,7 +9,10 @@ services:
       POSTGRES_DB: postgres
     ports:
       - "5432:5432"
-  app:
+    volumes: # Optional: Presist data
+      - db_data:/var/lib/postgresql/data
+
+  api:
     build:
       context: ../middleware/spring-boot
       dockerfile: Dockerfile
@@ -22,3 +25,18 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/postgres
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
+
+  fe:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: taskmaster-fe
+    ports:
+      - '80:80' # Map host port 80 to container port 80
+    volumes:
+      - ../frontend/nginx.conf:/etc/nginx/nginx.conf:ro # Mount custom Nginx config
+    depends_on:
+      - api # If Nginx proxies a backend
+
+volumes:
+  db_data: # Define the named volume for database persistence

@@ -25,12 +25,12 @@ Spring Boot application setup with Postgres backend and Angular front end
 
 ## Docker: Run
 
-1. Build API image: `npm run --prefix frontend boot-image`
-2. Run Docker compose: `npm run --prefix frontend docker-run`
-3. Run Angular front end: `npm run --prefix frontend angular-serve`
-4. When finished shutdown image: `npm run --prefix frontend docker-stop`
+1. Build Docker: `npm run --prefix frontend docker-build`
+1. Run Docker compose: `npm run --prefix frontend docker-run`
+1. When finished shutdown image: `npm run --prefix frontend docker-stop`
 
 ## Docker: Debug
 
 1. Shell into API: `npm run --prefix frontend docker-shell-api`
 2. Shell into DB: `npm run --prefix frontend docker-shell-db`
+3. Shell into FE: `npm run --prefix frontend docker-shell-fe`
