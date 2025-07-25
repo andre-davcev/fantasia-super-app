@@ -34,14 +34,3 @@ Spring Boot application setup with Postgres backend and Angular front end
 1. Shell into API: `npm run --prefix frontend docker-shell-api`
 2. Shell into DB: `npm run --prefix frontend docker-shell-db`
 3. Shell into FE: `npm run --prefix frontend docker-shell-fe`
-
-## Kubernetes: Setup
-
-1. [Install](https://helm.sh/docs/intro/install/) Helm
-2. [Install](https://kubernetes.io/docs/tasks/tools/) Kubernetes
-
-## Kubernetes: Run
-
-## Terraform: Setup
-
-1. [Install](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) Terraform
