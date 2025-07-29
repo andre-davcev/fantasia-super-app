@@ -14,7 +14,7 @@ services:
 
   api:
     build:
-      context: ../middleware/spring-boot
+      context: ../middleware/taskmaster
       dockerfile: Dockerfile
     container_name: taskmaster-api
     ports:
