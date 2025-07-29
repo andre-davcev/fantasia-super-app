@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -24,7 +24,7 @@ import { TaskFormSubmit } from './enums';
 @Component({
   selector: 'app-task-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './task-form.component.html',
   styleUrl: './task-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
