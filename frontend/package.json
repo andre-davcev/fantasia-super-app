@@ -12,8 +12,8 @@
     "boot-image": "cd ../middleware/taskmaster && docker build -t taskmaster-spring-boot .",
     "angular-serve": "npx nx serve taskmaster-angular",
     "docker-build": "cd ../docker && docker compose build",
-    "docker-run": "cd ../docker && docker-compose --env-file .env-local up -d",
-    "docker-stop": "cd ../docker && docker-compose down",
+    "docker-run": "cd ../docker && docker compose --env-file .env-local up -d",
+    "docker-stop": "cd ../docker && docker compose down",
     "docker-shell-api": "docker exec -it taskmaster-api sh",
     "docker-shell-db": "docker exec -it taskmaster-db sh",
     "docker-shell-fe": "docker exec -it taskmaster-fe sh"
@@ -40,6 +40,7 @@
     "@angular-eslint/eslint-plugin": "20.1.1",
     "@angular-eslint/eslint-plugin-template": "20.1.1",
     "@angular-eslint/template-parser": "20.1.1",
+    "@angular/cli": "20.1.3",
     "@angular/compiler-cli": "20.1.3",
     "@angular/language-service": "20.1.3",
     "@nx/cypress": "21.3.9",
