@@ -1,10 +1,12 @@
 # Stage 1: Build the Angular application
 FROM node:alpine AS build
 WORKDIR /app
-COPY package.json package-lock.json ./
+COPY package.json .npmrc ./
+ENV CYPRESS_INSTALL_BINARY=0
 RUN npm install
 COPY . .
 RUN npx nx reset
+
 RUN npx nx build taskmaster-angular
 
 # Stage 2: Serve the application with Nginx
