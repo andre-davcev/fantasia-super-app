@@ -1,6 +1,6 @@
 spring:
   application:
-    name: taskmaster
+    name: taskmaster-java
 
   # Connect to Docker Postgres image
   datasource:

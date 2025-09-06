@@ -4,4 +4,4 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 }
-rootProject.name = 'taskmaster'
+rootProject.name = 'taskmaster-java'
