@@ -1,0 +1,5 @@
+<div class="project-container">
+  <app-project-title></app-project-title>
+  <app-task-list (completed)="completedChanged($event)"></app-task-list>
+  <app-progress-bar [percent]="completed"></app-progress-bar>
+</div>
