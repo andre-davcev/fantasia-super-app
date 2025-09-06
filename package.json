@@ -11,7 +11,7 @@
     "taskmaster-boot-package": "cd apps/taskmaster-java && ./gradlew bootJar",
     "taskmaster-boot-image": "cd apps/taskmaster-java && docker build -t taskmaster-spring-boot .",
     "taskmaster-angular-serve": "npx nx serve taskmaster-angular",
-    "taskmaster-docker-build": "cd docker/taskmaster && docker compose build",
+    "taskmaster-docker-build": "docker compose -f docker/taskmaster/docker-compose.yml build",
     "taskmaster-docker-run": "cd docker/taskmaster && docker compose --env-file .env-local up -d",
     "taskmaster-docker-stop": "cd docker/taskmaster && docker compose down",
     "taskmaster-docker-shell-api": "docker exec -it taskmaster-api sh",

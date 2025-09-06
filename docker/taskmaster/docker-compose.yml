@@ -27,8 +27,8 @@ services:
 
   fe:
     build:
-      context: ../../apps/taskmaster-angular
-      dockerfile: Dockerfile
+      context: ../..
+      dockerfile: apps/taskmaster-angular/Dockerfile
     container_name: taskmaster-fe
     ports:
       - '80:80' # Map host port 80 to container port 80
