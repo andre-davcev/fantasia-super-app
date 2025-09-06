@@ -1,4 +1,5 @@
 plugins {
+    id "dev.nx.gradle.project-graph" version "0.1.0"
 	id 'application'
 	id 'java'
 	id 'org.springframework.boot' version '3.3.11-SNAPSHOT'
@@ -47,4 +48,10 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+allprojects {
+    apply {
+        plugin("dev.nx.gradle.project-graph")
+    }
 }
