@@ -5,8 +5,8 @@ spring:
   # Connect to Docker Postgres image
   datasource:
     driver-class-name: org.postgresql.Driver
-    # url: jdbc:postgresql://localhost:5432/postgres
-    url: jdbc:postgresql://db:5432/postgres
+    # url: jdbc:postgresql://localhost:5432/postgres # Spring Boot
+    url: jdbc:postgresql://db:5432/postgres # Docker Compose
     username: postgres
     password: postgres
 

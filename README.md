@@ -11,7 +11,7 @@ Spring Boot application setup with Postgres backend and Angular front end
 ## Spring Boot: Run
 
 1. Start local postgres container: `npm run postgres-start`
-2. Run Java api: `npm run taskmaster-boot-run`
+2. Run Java api: `npm run taskmaster-boot-run` (Requires application.yml db connect change)
 3. Run Angular front end: `npm run taskmaster-angular-serve`
 4. When finished shutdown postgres: `npm run postgres-stop`
 
