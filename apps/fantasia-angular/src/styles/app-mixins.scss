@@ -1,0 +1,19 @@
+@mixin hover(
+  $duration: 150ms,
+  $timing-function: ease,
+  $scale-default: 1,
+  $scale-hover: 1.05,
+  $opacity-default: 0.9,
+  $opacity-hover: 1
+) {
+  transform: scale($scale-default);
+  opacity: $opacity-default;
+  transition-duration: $duration;
+  transition-timing-function: $timing-function;
+  transition-property: transform, opacity;
+
+  &:hover {
+    transform: scale($scale-hover);
+    opacity: $opacity-hover;
+  }
+}

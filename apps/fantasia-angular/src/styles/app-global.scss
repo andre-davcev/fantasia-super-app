@@ -1,0 +1,23 @@
+@use 'app-variables' as app;
+
+@use '@angular/material' as mat;
+
+// Material Design Theme
+@include mat.elevation-classes();
+@include mat.app-background();
+@include mat.grid-list-theme(app.$app-color-theme);
+// @include angular-material-theme($app-color-theme);
+
+html {
+  background: url(/images/background-0003.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+:root {
+  --app-font-lobster: #{app.$app-font-lobster-name};
+  --app-color-white: #{app.$app-color-white};
+
+  --app-logo-color: rgba(255, 255, 255, 0.85);
+  --app-logo-font-family: #{app-font-lobster};
+  --app-logo-font-size: 4rem;
+}

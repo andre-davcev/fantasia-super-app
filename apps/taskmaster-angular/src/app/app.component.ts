@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 
 import { AuthService } from './services';
@@ -11,9 +11,9 @@ import { AuthService } from './services';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'Taskmaster (Angular)';
+  private auth: AuthService = inject(AuthService);
 
-  constructor(public auth: AuthService) {}
+  title = 'Taskmaster (Angular)';
 
   public logout(): void {
     this.auth.logout();

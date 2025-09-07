@@ -1,0 +1,22 @@
+@forward 'blueprint/variables';
+@use '@angular/material' as mat;
+
+// Material Theme
+$app-color-primary: mat.m2-define-palette(mat.$m2-indigo-palette);
+$app-color-accent: mat.m2-define-palette(
+  mat.$m2-yellow-palette,
+  A200,
+  A100,
+  A400
+);
+$app-color-warn: mat.m2-define-palette(mat.$m2-red-palette);
+$app-color-theme: mat.m2-define-light-theme(
+  $app-color-primary,
+  $app-color-accent,
+  $app-color-warn
+);
+
+$app-font-lobster-name: 'Lobster';
+$app-font-lobster-path-regular: '/fonts/lobster/Lobster-Regular.ttf';
+
+$app-color-white: #ffffff;

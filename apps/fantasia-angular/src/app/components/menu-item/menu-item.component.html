@@ -1,0 +1,22 @@
+@if (app) {
+<a
+  class="cpt-link cpt-frosted-glass tw-flex tw-flex-col tw-items-center tw-justify-center tw-h-screen"
+>
+  <img
+    class="cpt-avatar"
+    alt="{{ app.display || '' | translate }}"
+    [height]="size === IconSize.Large ? 64 : 48"
+    [width]="size === IconSize.Large ? 64 : 48"
+    [src]="app.icon"
+  />
+  @if (size === IconSize.Large) {
+  <h3 class="cpt-header">
+    {{ app.display || '' | translate }}
+  </h3>
+  } @if (size === IconSize.Large) {
+  <p class="cpt-description">
+    {{ app.description || '' | translate }}
+  </p>
+  }
+</a>
+}

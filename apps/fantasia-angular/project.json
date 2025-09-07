@@ -21,7 +21,18 @@
             "input": "apps/fantasia-angular/public"
           }
         ],
-        "styles": ["apps/fantasia-angular/src/styles.scss"]
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "node_modules",
+            "styles",
+            "apps/fantasia-angular/src/styles"
+          ]
+        },
+        "styles": [
+          "node_modules/normalize.css/normalize.css",
+          "styles/blueprint/reset.scss",
+          "apps/fantasia-angular/src/styles.scss"
+        ]
       },
       "configurations": {
         "production": {
@@ -76,7 +87,19 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/fantasia-angular/jest.config.ts"
+        "jestConfig": "apps/fantasia-angular/jest.config.ts",
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "node_modules",
+            "styles",
+            "apps/fantasia-angular/src/styles"
+          ]
+        },
+        "styles": [
+          "node_modules/normalize.css/normalize.css",
+          "styles/blueprint/reset.scss",
+          "apps/fantasia-angular/src/styles.scss"
+        ]
       }
     },
     "serve-static": {

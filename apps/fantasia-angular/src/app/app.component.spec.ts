@@ -1,20 +1,23 @@
-import { TestBed } from '@angular/core/testing';
+import { APP_BASE_HREF } from '@angular/common';
+import { RouterTestingModule } from '@angular/router/testing';
+import { createComponentFactory, Spectator } from '@ngneat/spectator';
+
+import { AppComponentModule } from './app.module';
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent, NxWelcomeComponent],
-    }).compileComponents();
+  let spectator: Spectator<AppComponent>;
+
+  const createComponent = createComponentFactory({
+    component: AppComponent,
+    imports: [RouterTestingModule, AppComponentModule],
+    providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
+    declareComponent: false
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome fantasia-angular'
-    );
+  beforeEach(() => (spectator = createComponent()));
+
+  it('should create', () => {
+    expect(spectator.component).toBeTruthy();
   });
 });
