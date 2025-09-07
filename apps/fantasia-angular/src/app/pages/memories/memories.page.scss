@@ -1,0 +1,12 @@
+:host {
+  --app-color-background: rgba(100, 210, 91, 1);
+
+  display: flex;
+  min-height: 100%;
+  min-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  background-color: var(--app-color-background);
+}

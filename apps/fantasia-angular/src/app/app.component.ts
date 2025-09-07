@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { Component, inject } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  imports: [NxWelcomeComponent],
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  selector: 'app-main',
+  templateUrl: 'app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  protected title = 'fantasia-angular';
+  private store = inject(Store);
+  private translate = inject(TranslateService);
+
+  constructor() {
+    const translate = this.translate;
+
+    translate.setDefaultLang('en');
+    translate.use('en');
+  }
 }

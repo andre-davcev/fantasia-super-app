@@ -1,4 +1,4 @@
-import { Injectable, Injector } from '@angular/core';
+import { Injectable, Injector, inject } from '@angular/core';
 import {
   HttpInterceptor,
   HttpRequest,
@@ -14,7 +14,8 @@ import { MockHttpRouteParam } from './mock-http-route-param.interface';
 
 @Injectable()
 export class HttpMockRequestInterceptor implements HttpInterceptor {
-  constructor(private injector: Injector) {}
+  private injector = inject(Injector);
+
 
   public intercept(
     request: HttpRequest<any>,

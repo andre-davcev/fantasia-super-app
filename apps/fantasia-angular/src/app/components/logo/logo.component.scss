@@ -1,0 +1,46 @@
+@use 'app-mixins' as mixins;
+
+:host {
+  --cpt-logo-color: rgba(0, 0, 0, 0.92);
+  --cpt-logo-font-family: var(--app-font-lobster);
+  --cpt-logo-font-size: 2.2rem;
+  --cpt-logo-width: 76px;
+  --cpt-logo-height: 55px;
+  --cpt-logo-border-radius: 5px;
+
+  @include mixins.hover;
+
+  .cpt-container {
+    cursor: pointer;
+    outline: none;
+
+    height: var(--cpt-logo-height);
+    width: var(--cpt-logo-width);
+    border-radius: var(--cpt-logo-border-radius);
+    color: var(--cpt-logo-color);
+    font-size: var(--cpt-logo-font-size);
+    font-family: var(--cpt-logo-font-family);
+    line-height: var(--cpt-logo-height);
+
+    overflow: hidden;
+    position: relative;
+    letter-spacing: 3px;
+
+    z-index: 1;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 102px;
+      height: 126px;
+      left: -15px;
+      right: 0;
+      top: -10px;
+      bottom: 0;
+      box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.6);
+      filter: blur(10px);
+      z-index: -1;
+    }
+  }
+}

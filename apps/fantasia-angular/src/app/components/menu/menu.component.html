@@ -1,0 +1,27 @@
+<app-logo (click)="home()"></app-logo>
+<div class="cpt-header--container" fxLayout="row" fxLayoutAlign="center">
+  <h1 class="cpt-header">Andre Davcev</h1>
+</div>
+
+@if (breakpoint$ | async) {
+<div
+  class="cpt-grid-apps cpt-columns-{{ columns$ | async }}"
+  fxLayout="row"
+  [fxLayoutAlign]="alignGrid$ | async"
+>
+  <section fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="2rem">
+    <mat-grid-list
+      [ngClass]="gridClass$ | async"
+      [cols]="columns$ | async"
+      [rowHeight]="(columns$ | async) === 1 ? '68px' : '181px'"
+      gutterSize="1rem"
+    >
+      @for (app of apps$ | async; track app) {
+      <mat-grid-tile>
+        <app-menu-item [app]="app" [size]="iconSize$ | async"></app-menu-item>
+      </mat-grid-tile>
+      }
+    </mat-grid-list>
+  </section>
+</div>
+}

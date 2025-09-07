@@ -1,0 +1,87 @@
+@use 'app-mixins' as mixins;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  app-logo {
+    position: absolute;
+    top: 32px;
+    left: 28px;
+  }
+
+  .cpt-header--container {
+    position: relative;
+    width: 100%;
+  }
+
+  .cpt-header {
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-family: var(--app-font-lobster);
+    padding-top: 1.5rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .cpt-paragraph {
+    font-size: 0.875;
+    color: white;
+    margin: 0;
+  }
+
+  .cpt-grid-apps {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+
+    &.cpt-columns-1 {
+      margin-top: 70px;
+      padding-left: 15px;
+
+      mat-grid-list {
+        width: 102px;
+      }
+    }
+
+    &.cpt-columns-2 {
+      mat-grid-list {
+        width: 484px;
+      }
+    }
+    /*
+    mat-grid-list {
+      width: 986px;
+
+      &.cpt-xl {
+        width: 484px;
+        // width: 734px;
+        // width: 986px;
+      }
+      &.cpt-lg {
+        width: 484px;
+        // width: 734px;
+        // width: 986px;
+      }
+      &.cpt-md {
+        width: 484px;
+        // width: 734px;
+      }
+      &.cpt-sm {
+        width: 484px;
+      }
+      &.cpt-xs {
+        width: 234px;
+      }
+    }
+*/
+    mat-grid-tile {
+      overflow: visible;
+
+      @include mixins.hover;
+    }
+  }
+}
