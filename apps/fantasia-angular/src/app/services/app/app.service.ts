@@ -1,19 +1,23 @@
 import { Injectable } from '@angular/core';
 
-import { AppProperties } from '../../models';
 import { App } from '../../enums';
+import { AppProperties } from '../../models';
 
-@Injectable({ providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class AppService {
-
-  public static toArray(lookup: Record<App, AppProperties>): Array<AppProperties> {
-    return Object.
-      keys(lookup).
-      map(id => lookup[id as App]).
-      sort((a: AppProperties, b: AppProperties) => (a.order || 0) - (b.order || 0));
+  public static toArray(
+    lookup: Record<App, AppProperties>
+  ): Array<AppProperties> {
+    return Object.keys(lookup)
+      .map((id) => lookup[id as App])
+      .sort(
+        (a: AppProperties, b: AppProperties) => (a.order || 0) - (b.order || 0)
+      );
   }
 
-  public generateLookup(apps: Array<AppProperties>): Record<App, AppProperties> {
+  public generateLookup(
+    apps: Array<AppProperties>
+  ): Record<App, AppProperties> {
     const lookup: Record<string, AppProperties> = {};
 
     for (const i in apps) {
@@ -26,7 +30,7 @@ export class AppService {
         order: parseInt(i, 10),
         display: `app.${key}.title`,
         description: `app.${key}.description`,
-        icon: `assets/icons/128/${key}.${ext}`
+        icon: `/icons/128/${key}.${ext}`,
       };
     }
 

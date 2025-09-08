@@ -77,7 +77,7 @@ describe('StateApp', () => {
         expect(app.iconExtension).toBe(original.iconExtension);
         expect(app.display).toBe(`app.${app.key}.title`);
         expect(app.description).toBe(`app.${app.key}.description`);
-        expect(app.icon).toBe(`assets/icons/128/${app.key}.png`);
+        expect(app.icon).toBe(`/icons/128/${app.key}.png`);
       });
   }));
 

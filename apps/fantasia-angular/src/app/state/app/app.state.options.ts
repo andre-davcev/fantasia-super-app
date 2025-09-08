@@ -1,8 +1,8 @@
-import { StoreOptions } from '@ngxs/store/src/symbols';
+import { ɵStoreOptions } from '@ngxs/store/internals';
 
 import { StateAppModel } from './app.state.model';
 
-export const StateAppOptions: StoreOptions<StateAppModel> = {
+export const StateAppOptions: ɵStoreOptions<StateAppModel> = {
   name: 'app2',
 
   defaults: {
@@ -10,6 +10,6 @@ export const StateAppOptions: StoreOptions<StateAppModel> = {
     apps: {},
     loading: false,
     stateName: 'init',
-    mediaChanges: []
-  }
+    mediaChanges: [],
+  },
 };

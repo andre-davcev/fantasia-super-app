@@ -22,7 +22,11 @@
           }
         ],
         "stylePreprocessorOptions": {
-          "includePaths": ["node_modules", "styles", "apps/fantasia/src/styles"]
+          "includePaths": [
+            "node_modules",
+            "styles",
+            "apps/fantasia-angular/src/styles"
+          ]
         },
         "styles": [
           "node_modules/normalize.css/normalize.css",
@@ -85,7 +89,11 @@
       "options": {
         "jestConfig": "apps/fantasia-angular/jest.config.ts",
         "stylePreprocessorOptions": {
-          "includePaths": ["node_modules", "styles", "apps/fantasia/src/styles"]
+          "includePaths": [
+            "node_modules",
+            "styles",
+            "apps/fantasia-angular/src/styles"
+          ]
         },
         "styles": [
           "node_modules/normalize.css/normalize.css",

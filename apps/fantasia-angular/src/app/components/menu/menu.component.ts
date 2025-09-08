@@ -3,7 +3,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
-import { Select, Store } from '@ngxs/store';
+import { Store } from '@ngxs/store';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -29,10 +29,13 @@ import { MenuItemComponent } from '../menu-item';
 export class MenuComponent implements OnInit {
   private store = inject(Store);
 
-  @Select(StateApp.apps) apps$!: Observable<Array<AppProperties>>;
-  @Select(StateApp.home) home$!: Observable<boolean>;
-  @Select(StateApp.mediaBreakpoint)
-  breakpoint$!: Observable<MaterialBreakpoint>;
+  private home$: Observable<boolean> = inject(Store).select(StateApp.home);
+  public apps$: Observable<Array<AppProperties>> = inject(Store).select(
+    StateApp.apps
+  );
+  public breakpoint$: Observable<MaterialBreakpoint | undefined> = inject(
+    Store
+  ).select(StateApp.mediaBreakpoint);
 
   public breakpointColumns: Record<string, number> = {
     [MaterialBreakpoint.ExtraSmall]: 1,
@@ -50,12 +53,12 @@ export class MenuComponent implements OnInit {
   public ngOnInit(): void {
     this.columns$ = combineLatest([this.breakpoint$, this.home$]).pipe(
       map(([breakpoint, home]) =>
-        home ? this.breakpointColumns[breakpoint] : 1
+        home && breakpoint != null ? this.breakpointColumns[breakpoint] : 1
       )
     );
 
     this.gridClass$ = this.breakpoint$.pipe(
-      map((breakpoint: MaterialBreakpoint) => `cpt-${breakpoint}`)
+      map((breakpoint: MaterialBreakpoint | undefined) => `cpt-${breakpoint}`)
     );
 
     this.alignGrid$ = this.columns$.pipe(

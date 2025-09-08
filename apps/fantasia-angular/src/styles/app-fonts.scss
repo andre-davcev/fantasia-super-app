@@ -1,7 +1,6 @@
-@import "app-variables";
+@use 'app-variables' as app;
 
-@font-face
-{
-    font-family: $app-font-lobster-name;
-    src: url($app-font-lobster-path-regular);
+@font-face {
+  font-family: app.$app-font-lobster-name;
+  src: url(app.$app-font-lobster-path-regular);
 }

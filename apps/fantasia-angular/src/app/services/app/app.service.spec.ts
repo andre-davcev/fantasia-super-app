@@ -30,7 +30,7 @@ describe('AppService', () => {
     expect(app.iconExtension).toBe(original.iconExtension);
     expect(app.display).toBe(`app.${app.key}.title`);
     expect(app.description).toBe(`app.${app.key}.description`);
-    expect(app.icon).toBe(`assets/icons/128/${app.key}.png`);
+    expect(app.icon).toBe(`/icons/128/${app.key}.png`);
   });
 
   it('should convert lookup to ordered array', () => {
@@ -43,6 +43,6 @@ describe('AppService', () => {
     const app: AppProperties = apps[1];
 
     expect(app.key).toBe(secondKey);
-    expect(app.icon).toBe(`assets/icons/128/${app.key}.${app.iconExtension}`);
+    expect(app.icon).toBe(`/icons/128/${app.key}.${app.iconExtension}`);
   });
 });
