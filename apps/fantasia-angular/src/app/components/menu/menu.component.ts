@@ -63,8 +63,8 @@ export class MenuComponent implements OnInit {
     this.alignGrid$ = this.columns$.pipe(
       map((count: number) =>
         count === 1
-          ? 'tw-justify-start tw-content-start'
-          : 'tw-justify-center tw-content-center'
+          ? 'tw-place-content-start tw-items-start'
+          : 'tw-place-content-center tw-items-center'
       )
     );
 

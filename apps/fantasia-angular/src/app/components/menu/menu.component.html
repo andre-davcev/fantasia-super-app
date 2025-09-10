@@ -1,14 +1,16 @@
 <app-logo (click)="home()"></app-logo>
-<div class="cpt-header--container tw-flex-row tw-justify-center">
+<div class="cpt-header--container tw-flex tw-flex-row tw-justify-center">
   <h1 class="cpt-header">Andre Davcev</h1>
 </div>
 
 @if (breakpoint$ | async) {
 <div
-  class="cpt-grid-apps cpt-columns-{{ columns$ | async }} tw-flex-row"
-  [class]="alignGrid$ | async"
+  class="cpt-grid-apps cpt-columns-{{ columns$ | async }} tw-flex tw-flex-row"
+  [ngClass]="alignGrid$ | async"
 >
-  <section class="tw-flex-column tw-justify-start tw-content-center tw-gap-8">
+  <section
+    class="tw-flex tw-flex-col tw-content-center tw-justify-start tw-items-center"
+  >
     <mat-grid-list
       [ngClass]="gridClass$ | async"
       [cols]="columns$ | async"
@@ -17,7 +19,11 @@
     >
       @for (app of apps$ | async; track app) {
       <mat-grid-tile>
-        <app-menu-item [app]="app" [size]="iconSize$ | async"></app-menu-item>
+        <app-menu-item
+          [app]="app"
+          [size]="iconSize$ | async"
+          [style.height]="(columns$ | async) === 1 ? '68px' : '181px'"
+        ></app-menu-item>
       </mat-grid-tile>
       }
     </mat-grid-list>
