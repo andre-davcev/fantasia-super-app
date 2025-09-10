@@ -1,5 +1,4 @@
 import { ApplicationRef, DoBootstrap, NgModule, inject } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PreloadAllModules, RouterModule } from '@angular/router';
@@ -16,7 +15,6 @@ import { MenuComponent } from './components';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FlexLayoutModule,
     RouterModule.forRoot(AppRoutes, { preloadingStrategy: PreloadAllModules }),
     NgxsRouterPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),

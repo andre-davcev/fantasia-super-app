@@ -1,6 +1,5 @@
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngxs/store';
@@ -18,10 +17,10 @@ import { MenuItemComponent } from '../menu-item';
   imports: [
     AsyncPipe,
     RouterModule,
-    FlexLayoutModule,
     MatGridListModule,
     LogoComponent,
     MenuItemComponent,
+    NgClass,
   ],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
@@ -62,7 +61,11 @@ export class MenuComponent implements OnInit {
     );
 
     this.alignGrid$ = this.columns$.pipe(
-      map((count: number) => (count === 1 ? 'start start' : 'center center'))
+      map((count: number) =>
+        count === 1
+          ? 'tw-justify-start tw-content-start'
+          : 'tw-justify-center tw-content-center'
+      )
     );
 
     this.iconSize$ = this.columns$.pipe(
