@@ -1,0 +1,25 @@
+name: 'Version Bump'
+description: 'Bump the semver version'
+inputs:
+  version:
+    description: 'Semver version #'
+    required: true
+    default: 'patch'
+  type:
+    description: 'Bump type: major, minor, patch, or build'
+    required: false
+    default: 'bump'
+
+outputs:
+  version:
+    description: 'New version number'
+  version-full:
+    description: 'Full version string (e.g., 2.3.1-SNAPSHOT)'
+  build:
+    description: 'Build number (if applicable)'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.version }}
+    - ${{ inputs.type }}

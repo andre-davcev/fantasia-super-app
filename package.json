@@ -20,6 +20,7 @@
     "affected:dep-graph": "npx nx affected:dep-graph",
     "fantasia-angular-serve": "npx nx serve fantasia-angular",
     "fantasia-angular-build": "npx nx build fantasia-angular",
+    "fantasia-angular-test": "npx nx test fantasia-angular",
     "fantasia-angular-lint": "npx nx workspace-lint && npx nx lint fantasia-angular",
     "fantasia-angular-e2e": "npx nx fantasia-angular-e2e",
     "taskmaster-boot-run": "npx nx run taskmaster-java:bootRun",
