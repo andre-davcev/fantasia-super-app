@@ -1,0 +1,8 @@
+name: 'CI: Pull Request'
+description: Run Nx CI
+on:
+  pull_request:
+
+jobs:
+  nx-ci:
+    uses: andre-davcev/fantasia-super-app/.github/workflows/nx-ci.yml@main

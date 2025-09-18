@@ -1,0 +1,35 @@
+name: Downmerge Branch
+
+on:
+  workflow_call:
+    inputs:
+      branch-source:
+        description: Source branch to downmerge from
+        type: string
+        required: false
+        default: 'main'
+      branch-target:
+        description: Target branch to downmerge into
+        type: string
+        required: false
+        default: 'develop'
+      commit-message:
+        description: Commit message for the downmerge
+        type: string
+        required: false
+        default: 'Downmerge changes from ${{ inputs.branch-source }} to ${{ inputs.branch-target }}'
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Downmerge branch
+        uses: andre-davcev/fantasia-super-app/.github/actions/downmerge@main
+        with:
+          branch-source: ${{ inputs.branch-source }}
+          branch-target: ${{ inputs.branch-target }}
+          commit-message: ${{ inputs.commit-message }}

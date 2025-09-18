@@ -1,0 +1,21 @@
+name: 'TypeScript Version Set'
+description: 'Update the version number in a TypeScript file'
+inputs:
+  version:
+    description: 'Version number to set'
+    required: true
+  path:
+    description: 'Path to TypeScript file'
+    required: false
+    default: 'version.ts'
+  token:
+    description: 'Token used for version export'
+    required: false
+    default: 'APP_VERSION'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.version }}
+    - ${{ inputs.path }}
+    - ${{ inputs.token }}
