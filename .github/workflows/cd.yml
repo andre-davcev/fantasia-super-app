@@ -28,7 +28,3 @@ jobs:
           projectId: fantasia-c9431
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
-
-  downmerge:
-    uses: andre-davcev/fantasia-super-app/.github/workflows/downmerge.yml@main
-    needs: deploy
