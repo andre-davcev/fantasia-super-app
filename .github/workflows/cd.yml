@@ -6,6 +6,8 @@ on:
 jobs:
   nx-ci:
     uses: andre-davcev/fantasia-super-app/.github/workflows/nx-ci.yml@main
+    with:
+      node-version: 22
 
   deploy:
     runs-on: ubuntu-latest
