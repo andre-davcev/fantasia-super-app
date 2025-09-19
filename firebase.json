@@ -1,7 +1,11 @@
 {
   "hosting": {
     "public": "dist/apps/fantasia-angular",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
     "rewrites": [
       {
         "source": "**",
