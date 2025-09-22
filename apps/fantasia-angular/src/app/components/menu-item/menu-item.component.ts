@@ -23,7 +23,7 @@ export class MenuItemComponent {
   private store = inject(Store);
 
   public animation: string = Animation.Default;
-  public IconSize: any = IconSize;
+  public IconSize = IconSize;
 
   @Input()
   public app!: AppProperties;

@@ -25,7 +25,7 @@ import {
   StateAppModel,
   StateAppOptions,
 } from '../../state';
-import { MenuComponent, MenuComponentModule } from './menu.component';
+import { MenuComponent } from './menu.component';
 
 describe('MenuComponent', () => {
   let store: SpectatorService<Store>;
@@ -37,7 +37,7 @@ describe('MenuComponent', () => {
   const createComponent = createComponentFactory<MenuComponent>({
     component: MenuComponent,
     imports: [
-      MenuComponentModule,
+      MenuComponent,
       RouterTestingModule,
       NgxsModule.forRoot([StateApp]),
       TranslateModule.forRoot(),
@@ -119,7 +119,7 @@ describe('MenuComponent', () => {
     spectator.fixture.detectChanges();
 
     store.service
-      .selectOnce((state: any) => state[StateAppOptions.name as string])
+      .selectOnce((state) => state[StateAppOptions.name as string])
       .subscribe((state: StateAppModel) => {
         expect(StateApp.home(state)).toBe(true);
       });

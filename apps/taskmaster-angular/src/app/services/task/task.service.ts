@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { Task } from '../../models';
 
 const BASE_URL: string = 'http://localhost:8080/api';
@@ -9,7 +10,7 @@ const BASE_URL: string = 'http://localhost:8080/api';
   providedIn: 'root',
 })
 export class TaskService {
-  constructor(private http: HttpClient) {}
+  private http: HttpClient = inject(HttpClient);
 
   public getAll(): Observable<Array<Task>> {
     return this.http.get<Array<Task>>(`${BASE_URL}/tasks`);

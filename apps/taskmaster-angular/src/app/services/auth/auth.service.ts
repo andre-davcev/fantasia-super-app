@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -14,13 +14,11 @@ import {
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl: string = 'http://localhost:8080/api/auth';
+  private http: HttpClient = inject(HttpClient);
+  private router: Router = inject(Router);
+  private storage: StorageService = inject(StorageService);
 
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-    private storage: StorageService
-  ) {}
+  private apiUrl: string = 'http://localhost:8080/api/auth';
 
   public login(
     request: AuthenticationRequest

@@ -64,7 +64,7 @@ describe('StateApp', () => {
     store.service.dispatch(new ActionAppLoad(AppList));
 
     store.service
-      .selectOnce((state: any) => state[StateAppOptions.name as string])
+      .selectOnce((state) => state[StateAppOptions.name as string])
       .subscribe((state: StateAppModel) => {
         const original: AppProperties = AppList[0];
         const apps: Array<AppProperties> = StateApp.apps(state);
@@ -97,7 +97,7 @@ describe('StateApp', () => {
     ]);
 
     store.service
-      .selectOnce((state: any) => state[StateAppOptions.name as string])
+      .selectOnce((state) => state[StateAppOptions.name as string])
       .subscribe((state: StateAppModel) => {
         expect(StateApp.home(state)).toBe(true);
         expect(StateApp.loading(state)).toBe(true);
@@ -116,7 +116,7 @@ describe('StateApp', () => {
     ]);
 
     store.service
-      .selectOnce((state: any) => state[StateAppOptions.name as string])
+      .selectOnce((state) => state[StateAppOptions.name as string])
       .subscribe((state: StateAppModel) => {
         expect(StateApp.home(state)).toBe(false);
         expect(StateApp.loading(state)).toBe(true);
@@ -135,7 +135,7 @@ describe('StateApp', () => {
     ]);
 
     store.service
-      .selectOnce((state: any) => state[StateAppOptions.name as string])
+      .selectOnce((state) => state[StateAppOptions.name as string])
       .subscribe((state: StateAppModel) => {
         expect(StateApp.home(state)).toBe(true);
         expect(window.open).toHaveBeenCalledWith(
@@ -146,7 +146,7 @@ describe('StateApp', () => {
 
   it('should default breakpoint state', waitForAsync(() => {
     store.service
-      .selectOnce((state: any) => state[StateAppOptions.name as string])
+      .selectOnce((state) => state[StateAppOptions.name as string])
       .subscribe((state: StateAppModel) => {
         expect(StateApp.mediaBreakpoint(state)).toBeFalsy();
       });
@@ -156,7 +156,7 @@ describe('StateApp', () => {
     store.service.dispatch(new ActionAppWatchMediaBreakpoints());
 
     store.service
-      .selectOnce((state: any) => state[StateAppOptions.name as string])
+      .selectOnce((state) => state[StateAppOptions.name as string])
       .subscribe((state: StateAppModel) => {
         expect(StateApp.mediaBreakpoint(state)).toBe(
           MaterialBreakpoint.ExtraSmall

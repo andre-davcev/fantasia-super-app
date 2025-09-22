@@ -1,5 +1,5 @@
 import { AsyncPipe, CommonModule, DatePipe } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { Task } from '../../../models';
@@ -24,6 +24,8 @@ const TASK_EMPTY: Task = {
   styleUrl: './task-list.component.scss',
 })
 export class TaskListComponent {
+  private taskService: TaskService = inject(TaskService);
+
   public tasks: Array<Task> = [];
   public tasks$!: Observable<Array<Task>>;
   public showModal: boolean = false;
@@ -33,7 +35,7 @@ export class TaskListComponent {
   @Output()
   public completed: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor(private taskService: TaskService) {
+  constructor() {
     this.getTasks();
 
     this.completed.emit(0);

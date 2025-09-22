@@ -1,5 +1,4 @@
-
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -27,15 +26,15 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent {
+  private auth: AuthService = inject(AuthService);
+  private storage: StorageService = inject(StorageService);
+  private router: Router = inject(Router);
+  private formBuilder: FormBuilder = inject(FormBuilder);
+
   public registerForm: FormGroup;
   public errorMessage!: string;
 
-  constructor(
-    private auth: AuthService,
-    private storage: StorageService,
-    private router: Router,
-    private formBuilder: FormBuilder
-  ) {
+  constructor() {
     this.registerForm = this.formBuilder.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -58,7 +57,7 @@ export class RegisterComponent {
           tap(() => (this.errorMessage = '')),
           switchMap(() => from(this.router.navigate(['/']))),
           catchError(
-            (error) =>
+            () =>
               (this.errorMessage =
                 'Incorrect registration information, please try again.')
           )

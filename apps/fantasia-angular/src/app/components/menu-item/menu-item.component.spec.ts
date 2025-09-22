@@ -16,10 +16,7 @@ import { AppList } from '../../constants';
 import { AppProperties } from '../../models';
 import { AppService } from '../../services';
 import { ActionAppLoad, StateApp, StateAppOptions } from '../../state';
-import {
-  MenuItemComponent,
-  MenuItemComponentModule,
-} from './menu-item.component';
+import { MenuItemComponent } from './menu-item.component';
 
 describe('MenuItemComponent', () => {
   let store: SpectatorService<Store>;
@@ -31,12 +28,11 @@ describe('MenuItemComponent', () => {
     createServiceFactory<AppService>(AppService);
 
   let spectator: Spectator<MenuItemComponent>;
-  let element: HTMLElement;
 
   const createComponent = createComponentFactory<MenuItemComponent>({
     component: MenuItemComponent,
     imports: [
-      MenuItemComponentModule,
+      MenuItemComponent,
       RouterTestingModule,
       NgxsModule.forRoot([StateApp]),
       TranslateModule.forRoot(),
@@ -57,8 +53,6 @@ describe('MenuItemComponent', () => {
       app.service.generateLookup(AppList)
     )[0];
     spectator.fixture.detectChanges();
-
-    element = spectator.debugElement.query(By.css('.cpt-link')).nativeElement;
   }));
 
   it('should create', () => {
