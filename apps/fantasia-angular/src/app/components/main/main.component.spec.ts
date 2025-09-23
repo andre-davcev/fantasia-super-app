@@ -1,9 +1,9 @@
+import { provideHttpClient } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Spectator, createComponentFactory } from '@ngneat/spectator';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgxsModule } from '@ngxs/store';
+import { provideStore } from '@ngxs/store';
 
-import { provideHttpClient } from '@angular/common/http';
 import { StateApp } from '../../state';
 import { MainComponent } from './main.component';
 import { MainComponentModule } from './main.component.module';
@@ -15,11 +15,10 @@ describe('MainComponent', () => {
     component: MainComponent,
     imports: [
       MainComponentModule,
-      NgxsModule.forRoot([StateApp]),
       TranslateModule.forRoot(),
       NoopAnimationsModule,
     ],
-    providers: [provideHttpClient()],
+    providers: [provideHttpClient(), provideStore([StateApp])],
     declareComponent: false,
   });
 

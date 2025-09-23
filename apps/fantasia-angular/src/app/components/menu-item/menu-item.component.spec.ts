@@ -2,14 +2,14 @@ import { waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {
+  createComponentFactory,
+  createServiceFactory,
   Spectator,
   SpectatorService,
   SpectatorServiceFactory,
-  createComponentFactory,
-  createServiceFactory,
 } from '@ngneat/spectator';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgxsModule, Store } from '@ngxs/store';
+import { provideStore, Store } from '@ngxs/store';
 
 import { provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
@@ -34,11 +34,14 @@ describe('MenuItemComponent', () => {
     component: MenuItemComponent,
     imports: [
       MenuItemComponent,
-      NgxsModule.forRoot([StateApp]),
       TranslateModule.forRoot(),
       NoopAnimationsModule,
     ],
-    providers: [provideRouter([]), provideHttpClient()],
+    providers: [
+      provideRouter([]),
+      provideHttpClient(),
+      provideStore([StateApp]),
+    ],
     declareComponent: false,
   });
 

@@ -34,29 +34,35 @@ export class StateApp {
   private app = inject(AppService);
   private mediaObserver = inject(MediaObserver);
 
-  @Selector() static home(state: StateAppModel): boolean {
+  @Selector([StateApp]) static home(state: StateAppModel): boolean {
     return state.home;
   }
-  @Selector() static loading(state: StateAppModel): boolean {
+  @Selector([StateApp]) static loading(state: StateAppModel): boolean {
     return state.loading;
   }
-  @Selector() static appLookup(
+  @Selector([StateApp]) static appLookup(
     state: StateAppModel
   ): Record<App, AppProperties> {
     return state.apps;
   }
-  @Selector() static apps(state: StateAppModel): Array<AppProperties> {
+  @Selector([StateApp]) static apps(
+    state: StateAppModel
+  ): Array<AppProperties> {
     const appLookup: Record<App, AppProperties> = StateApp.appLookup(state);
 
     return AppService.toArray(appLookup);
   }
-  @Selector() static mediaChanges(state: StateAppModel): Array<MediaChange> {
+  @Selector([StateApp]) static mediaChanges(
+    state: StateAppModel
+  ): Array<MediaChange> {
     return state.mediaChanges;
   }
-  @Selector() static mediaChangesFound(state: StateAppModel): boolean {
+  @Selector([StateApp]) static mediaChangesFound(
+    state: StateAppModel
+  ): boolean {
     return StateApp.mediaChanges(state).length > 0;
   }
-  @Selector() static mediaBreakpoint(
+  @Selector([StateApp]) static mediaBreakpoint(
     state: StateAppModel
   ): MaterialBreakpoint | undefined {
     return StateApp.mediaChangesFound(state)

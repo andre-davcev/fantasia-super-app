@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: taskmaster-java
+
+  # Connect to Docker Postgres image
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+  # Align database schema with our code
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+
+logging:
+  level:
+    root: INFO
+    org.springframework.security: INFO
+    com.andredavcev.taskmaster: INFO
