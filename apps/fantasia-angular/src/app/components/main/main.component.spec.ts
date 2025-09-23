@@ -1,9 +1,9 @@
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterTestingModule } from '@angular/router/testing';
 import { Spectator, createComponentFactory } from '@ngneat/spectator';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxsModule } from '@ngxs/store';
 
+import { provideHttpClient } from '@angular/common/http';
 import { StateApp } from '../../state';
 import { MainComponent } from './main.component';
 import { MainComponentModule } from './main.component.module';
@@ -14,12 +14,12 @@ describe('MainComponent', () => {
   const createComponent = createComponentFactory({
     component: MainComponent,
     imports: [
-      RouterTestingModule,
       MainComponentModule,
       NgxsModule.forRoot([StateApp]),
       TranslateModule.forRoot(),
       NoopAnimationsModule,
     ],
+    providers: [provideHttpClient()],
     declareComponent: false,
   });
 

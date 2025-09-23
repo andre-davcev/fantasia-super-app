@@ -1,6 +1,7 @@
-import { RouterTestingModule } from '@angular/router/testing';
 import { Spectator, createComponentFactory } from '@ngneat/spectator';
 
+import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
 import { ArtPageComponent, ArtPageComponentModule } from './art.page';
 
 describe('ArtPageComponent', () => {
@@ -8,7 +9,8 @@ describe('ArtPageComponent', () => {
 
   const createComponent = createComponentFactory({
     component: ArtPageComponent,
-    imports: [RouterTestingModule, ArtPageComponentModule],
+    imports: [ArtPageComponentModule],
+    providers: [provideRouter([]), provideHttpClient()],
     declareComponent: false,
   });
 

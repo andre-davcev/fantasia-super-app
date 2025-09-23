@@ -2,7 +2,6 @@ import { DebugElement } from '@angular/core';
 import { waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterTestingModule } from '@angular/router/testing';
 import {
   createComponentFactory,
   createServiceFactory,
@@ -15,6 +14,8 @@ import { NgxsModule, Store } from '@ngxs/store';
 import { of } from 'rxjs';
 import { take } from 'rxjs/operators';
 
+import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
 import { AppList } from '../../constants';
 import { App, MaterialBreakpoint } from '../../enums';
 import {
@@ -38,11 +39,11 @@ describe('MenuComponent', () => {
     component: MenuComponent,
     imports: [
       MenuComponent,
-      RouterTestingModule,
       NgxsModule.forRoot([StateApp]),
       TranslateModule.forRoot(),
       NoopAnimationsModule,
     ],
+    providers: [provideRouter([]), provideHttpClient()],
     declareComponent: false,
   });
 

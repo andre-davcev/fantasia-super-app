@@ -1,7 +1,6 @@
 import { waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterTestingModule } from '@angular/router/testing';
 import {
   Spectator,
   SpectatorService,
@@ -12,6 +11,8 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxsModule, Store } from '@ngxs/store';
 
+import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
 import { AppList } from '../../constants';
 import { AppProperties } from '../../models';
 import { AppService } from '../../services';
@@ -33,11 +34,11 @@ describe('MenuItemComponent', () => {
     component: MenuItemComponent,
     imports: [
       MenuItemComponent,
-      RouterTestingModule,
       NgxsModule.forRoot([StateApp]),
       TranslateModule.forRoot(),
       NoopAnimationsModule,
     ],
+    providers: [provideRouter([]), provideHttpClient()],
     declareComponent: false,
   });
 

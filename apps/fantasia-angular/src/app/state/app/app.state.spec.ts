@@ -1,6 +1,5 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
-import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter, Router } from '@angular/router';
 import { NgxsModule, Store } from '@ngxs/store';
 
 import { MediaObserver } from '@angular/flex-layout';
@@ -21,6 +20,7 @@ import { StateApp } from './app.state';
 import { StateAppModel } from './app.state.model';
 import { StateAppOptions } from './app.state.options';
 
+import { provideHttpClient } from '@angular/common/http';
 import { AppRoutes } from '../../app.routes';
 import { AppList } from '../../constants';
 import { App, MaterialBreakpoint } from '../../enums';
@@ -45,11 +45,14 @@ describe('StateApp', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule.withRoutes(AppRoutes),
         NgxsModule.forRoot([StateApp]),
         NgxsRouterPluginModule.forRoot(),
       ],
-      providers: [{ provide: MediaObserver, useClass: MockMediaObserver }],
+      providers: [
+        provideRouter(AppRoutes),
+        provideHttpClient(),
+        { provide: MediaObserver, useClass: MockMediaObserver },
+      ],
       teardown: { destroyAfterEach: false },
     }).compileComponents();
 
