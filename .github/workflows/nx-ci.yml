@@ -52,7 +52,7 @@ jobs:
         run: npx nx affected -t test --exclude="taskmaster-java"
 
       - name: Run e2e tests for affected files
-        run: npx nx affected -t e2e-ci
+        run: npx nx affected -t e2e
 
       - name: Build affected files
         run: npx nx affected -t build
