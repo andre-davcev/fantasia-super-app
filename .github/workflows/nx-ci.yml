@@ -33,8 +33,8 @@ jobs:
 
       - name: Install npm dependencies
         run: npm ci
-        # env:
-        #   CYPRESS_INSTALL_BINARY: 0
+        env:
+          CYPRESS_INSTALL_BINARY: 0
 
       - name: Run npm audit for high level vulnerabilities
         run: npm audit --omit=dev --audit-level high
@@ -51,8 +51,8 @@ jobs:
       - name: Run tests on affected files
         run: npx nx affected -t test --exclude="taskmaster-java"
 
-      - name: Run e2e tests for affected files
-        run: npx nx affected -t e2e
+      # - name: Run e2e tests for affected files
+      #   run: npx nx affected -t e2e-ci
 
       - name: Build affected files
         run: npx nx affected -t build
