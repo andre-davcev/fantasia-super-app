@@ -1,8 +1,8 @@
-
 import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
+  inject,
   Input,
   OnChanges,
   Output,
@@ -30,6 +30,9 @@ import { TaskFormSubmit } from './enums';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskFormComponent implements OnChanges {
+  private formBuilder: FormBuilder = inject(FormBuilder);
+  private taskService: TaskService = inject(TaskService);
+
   public taskForm: FormGroup;
 
   @Input() public taskCurrent!: Task;
@@ -37,10 +40,7 @@ export class TaskFormComponent implements OnChanges {
   @Output() public closePanel: EventEmitter<TaskFormSubmit> =
     new EventEmitter<TaskFormSubmit>();
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private taskService: TaskService
-  ) {
+  constructor() {
     this.taskForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: [''],

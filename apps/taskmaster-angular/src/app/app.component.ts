@@ -11,7 +11,7 @@ import { AuthService } from './services';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  private auth: AuthService = inject(AuthService);
+  public auth: AuthService = inject(AuthService);
 
   title = 'Taskmaster (Angular)';
 

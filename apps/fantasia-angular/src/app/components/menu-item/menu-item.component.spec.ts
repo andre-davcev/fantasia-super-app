@@ -1,25 +1,23 @@
 import { waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterTestingModule } from '@angular/router/testing';
 import {
+  createComponentFactory,
+  createServiceFactory,
   Spectator,
   SpectatorService,
   SpectatorServiceFactory,
-  createComponentFactory,
-  createServiceFactory,
 } from '@ngneat/spectator';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgxsModule, Store } from '@ngxs/store';
+import { provideStore, Store } from '@ngxs/store';
 
+import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
 import { AppList } from '../../constants';
 import { AppProperties } from '../../models';
 import { AppService } from '../../services';
 import { ActionAppLoad, StateApp, StateAppOptions } from '../../state';
-import {
-  MenuItemComponent,
-  MenuItemComponentModule,
-} from './menu-item.component';
+import { MenuItemComponent } from './menu-item.component';
 
 describe('MenuItemComponent', () => {
   let store: SpectatorService<Store>;
@@ -31,16 +29,18 @@ describe('MenuItemComponent', () => {
     createServiceFactory<AppService>(AppService);
 
   let spectator: Spectator<MenuItemComponent>;
-  let element: HTMLElement;
 
   const createComponent = createComponentFactory<MenuItemComponent>({
     component: MenuItemComponent,
     imports: [
-      MenuItemComponentModule,
-      RouterTestingModule,
-      NgxsModule.forRoot([StateApp]),
+      MenuItemComponent,
       TranslateModule.forRoot(),
       NoopAnimationsModule,
+    ],
+    providers: [
+      provideRouter([]),
+      provideHttpClient(),
+      provideStore([StateApp]),
     ],
     declareComponent: false,
   });
@@ -57,8 +57,6 @@ describe('MenuItemComponent', () => {
       app.service.generateLookup(AppList)
     )[0];
     spectator.fixture.detectChanges();
-
-    element = spectator.debugElement.query(By.css('.cpt-link')).nativeElement;
   }));
 
   it('should create', () => {

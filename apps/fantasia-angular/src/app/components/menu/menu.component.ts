@@ -28,13 +28,12 @@ import { MenuItemComponent } from '../menu-item';
 export class MenuComponent implements OnInit {
   private store = inject(Store);
 
-  private home$: Observable<boolean> = inject(Store).select(StateApp.home);
-  public apps$: Observable<Array<AppProperties>> = inject(Store).select(
+  private home$: Observable<boolean> = this.store.select(StateApp.home);
+  public apps$: Observable<Array<AppProperties>> = this.store.select(
     StateApp.apps
   );
-  public breakpoint$: Observable<MaterialBreakpoint | undefined> = inject(
-    Store
-  ).select(StateApp.mediaBreakpoint);
+  public breakpoint$: Observable<MaterialBreakpoint | undefined> =
+    this.store.select(StateApp.mediaBreakpoint);
 
   public breakpointColumns: Record<string, number> = {
     [MaterialBreakpoint.ExtraSmall]: 1,

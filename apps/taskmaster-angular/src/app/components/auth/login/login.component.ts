@@ -1,5 +1,4 @@
-
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -25,15 +24,15 @@ import {
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
+  private auth: AuthService = inject(AuthService);
+  private storage: StorageService = inject(StorageService);
+  private router: Router = inject(Router);
+  private formBuilder: FormBuilder = inject(FormBuilder);
+
   public loginForm: FormGroup;
   public errorMessage!: string;
 
-  constructor(
-    private auth: AuthService,
-    private storage: StorageService,
-    private router: Router,
-    private formBuilder: FormBuilder
-  ) {
+  constructor() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -53,8 +52,7 @@ export class LoginComponent {
           tap(() => (this.errorMessage = '')),
           switchMap(() => from(this.router.navigate(['/']))),
           catchError(
-            (error) =>
-              (this.errorMessage = 'Incorrect login, please try again.')
+            () => (this.errorMessage = 'Incorrect login, please try again.')
           )
         )
         .subscribe();

@@ -74,3 +74,10 @@ Spring Boot application setup with Postgres backend and Angular front end
 1. Shell into API: `npm run taskmaster-docker-shell-api`
 2. Shell into DB: `npm run taskmaster-docker-shell-db`
 3. Shell into FE: `npm run taskmaster-docker-shell-fe`
+
+## Jupyter Notebooks Setup
+
+1. Create python venv via VS Code in your workspace
+2. Source your python env: `source .venv/bin/activate`
+3. Install ipykernel in your venv: `pip install ipykernel`
+4. Register the newly installed ipykernel from your venv: `python -m ipykernel install --user --name=my_venv_kernel --display-name "My Venv Kernel"`

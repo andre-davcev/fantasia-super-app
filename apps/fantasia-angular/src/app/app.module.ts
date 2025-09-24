@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
-import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
@@ -16,7 +15,6 @@ import { MenuComponent } from './components';
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes, { preloadingStrategy: PreloadAllModules }),
-    NgxsRouterPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
 
     MenuComponent,
