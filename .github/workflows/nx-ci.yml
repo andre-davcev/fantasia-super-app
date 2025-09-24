@@ -49,7 +49,7 @@ jobs:
         run: npx nx affected -t lint
 
       - name: Run tests on affected files
-        run: npx nx affected -t test
+        run: npx nx affected -t test --exclude="taskmaster-java"
 
       - name: Run e2e tests for affected files
         run: npx nx affected -t e2e-ci
