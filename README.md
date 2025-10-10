@@ -14,27 +14,7 @@ Although this is a personal project, you should be able to replicate my environm
 
 Run `npm run fan-serve`. Then navigate to (localhost:4201)[http://localhost:4201/]. Enjoy!
 
-## To Do List
 
-- [ ] Update to Nx `v15`
-- [ ] Update to Nx `v16`
-- [ ] Update to Nx `v17`
-- [ ] Migrate fantasia to be [module federation host](https://nx.dev/recipes/module-federation/create-a-host)
-- [ ] Migrate torcoin to be [module federation remote](https://nx.dev/recipes/module-federation/create-a-remote)
-- [ ] Add [storybook](https://nx.dev/recipes/storybook/overview-angular) to fantasia
-- [ ] `npx nx g @nrwl/workspace:convert-to-nx-project --all`
-- [ ] Nx workspace v2
-- [ ] Copy over `theory-apps` code format config
-- [ ] `npx nx format:write --all`
-- [ ] Upgrade [torqoin](https://github.com/andre-davcev/torqoin) to `npx nx migrate 14.8.4`
-- [ ] Move business logic to fantasia lib
-- [ ] Fix menu missing on child pages
-- [ ] Implement [Response Glass Sidebar](https://youtu.be/hAnv1NEE7j8)
-- [ ] Replace @angular/flex-layout with tailwind
-- [ ] `npx nx migrate latest`
-- [ ] Design new icons
-- [ ] Implement [WebGL Fluid Simulation](https://github.com/PavelDoGreat/WebGL-Fluid-Simulation) As Background On `/art`
-- [ ] Add soundtrack playlist
 
 ## Thanks for checking out my code!
 
@@ -75,9 +55,18 @@ Spring Boot application setup with Postgres backend and Angular front end
 2. Shell into DB: `npm run taskmaster-docker-shell-db`
 3. Shell into FE: `npm run taskmaster-docker-shell-fe`
 
-## Jupyter Notebooks Setup
+# Jupyter Notebooks Setup
 
 1. Create python venv via VS Code in your workspace
 2. Source your python env: `source .venv/bin/activate`
 3. Install ipykernel in your venv: `pip install ipykernel`
 4. Register the newly installed ipykernel from your venv: `python -m ipykernel install --user --name=my_venv_kernel --display-name "My Venv Kernel"`
+
+# Supabase: Docker Setup
+1. Follow steps for [Self Hosting Guide](https://supabase.com/docs/guides/self-hosting/docker)
+
+## Supabase: Run
+1. Run Supabase: `npm run supabase-run`
+2. Check services: `npm run supabase-services`
+3. Navigate to [localhost:8000](http://localhost:8000/)
+4. Stop Supabase: `npm run supabase-stop`
