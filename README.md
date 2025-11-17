@@ -14,8 +14,6 @@ Although this is a personal project, you should be able to replicate my environm
 
 Run `npm run fan-serve`. Then navigate to (localhost:4201)[http://localhost:4201/]. Enjoy!
 
-
-
 ## Thanks for checking out my code!
 
 # Taskmaster (Angular Spring Boot)
@@ -55,17 +53,20 @@ Spring Boot application setup with Postgres backend and Angular front end
 2. Shell into DB: `npm run taskmaster-docker-shell-db`
 3. Shell into FE: `npm run taskmaster-docker-shell-fe`
 
-# Jupyter Notebooks Setup
+## Jupyter Notebooks Setup
 
-1. Create python venv via VS Code in your workspace
-2. Source your python env: `source .venv/bin/activate`
-3. Install ipykernel in your venv: `pip install ipykernel`
-4. Register the newly installed ipykernel from your venv: `python -m ipykernel install --user --name=my_venv_kernel --display-name "My Venv Kernel"`
+1. Open up the `Command Palette`
+2. Select `Python: Create Environment...`
+3. Select `Venv` or `Conda`
+4. Select the `ipykernel` to install in your local environment
 
 # Supabase: Docker Setup
+
 1. Follow steps for [Self Hosting Guide](https://supabase.com/docs/guides/self-hosting/docker)
+2. Copy steps should be put in `docker/supabase`
 
 ## Supabase: Run
+
 1. Run Supabase: `npm run supabase-run`
 2. Check services: `npm run supabase-services`
 3. Navigate to [localhost:8000](http://localhost:8000/)
