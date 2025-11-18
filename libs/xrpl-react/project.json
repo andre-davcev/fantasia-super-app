@@ -1,0 +1,9 @@
+{
+  "name": "xrpl-react",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/xrpl-react/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project xrpl-react --web",
+  "targets": {}
+}

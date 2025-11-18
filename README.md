@@ -71,3 +71,8 @@ Spring Boot application setup with Postgres backend and Angular front end
 2. Check services: `npm run supabase-services`
 3. Navigate to [localhost:8000](http://localhost:8000/)
 4. Stop Supabase: `npm run supabase-stop`
+
+## XRPL Course: Run
+
+1. Serve application: `npx nx serve xrpl-course-react`
+2. Navigate to [localhost:4202](http://localhost:4202/)
