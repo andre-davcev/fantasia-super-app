@@ -76,3 +76,10 @@ Spring Boot application setup with Postgres backend and Angular front end
 
 1. Serve application: `npx nx serve xrpl-course-react`
 2. Navigate to [localhost:4202](http://localhost:4202/)
+
+## Nx Shadcn Installation
+
+1. Generate shadcn library: `npx nx generate @nx/react:library --directory=libs/shadcn --bundler=vite --name=shadcn --compiler=swc --no-interactive`
+2. Delete src folder: `rm -rf libs/shadcn/src`
+3. Make `ui` & `styles` directories: `mkdir libs/shadcn/ui & mkdir libs/shadcn/styles`
+4. Make `global.css` file: `touch libs/shadcn/styles/global.css`
