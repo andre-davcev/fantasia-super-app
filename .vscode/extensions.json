@@ -30,7 +30,6 @@
     "firsttris.vscode-jest-runner",
     "dbaeumer.vscode-eslint",
     "ms-vscode-remote.remote-ssh",
-    "mhutchie.git-graph",
-    "donjayamanne.githistory"
+    "ms-playwright.playwright"
   ]
 }

@@ -1,0 +1,9 @@
+{
+  "name": "xrpl-course-react",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/xrpl-course-react/src",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project xrpl-course-react --web",
+  "targets": {}
+}
