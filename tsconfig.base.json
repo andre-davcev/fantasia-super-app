@@ -15,8 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@angular/shadcn": ["libs/shadcn/src/index.ts"],
-      "@angular/xrpl-react": ["libs/xrpl-react/src/index.ts"]
+      "@shadcn/ui": ["libs/shadcn/src/ui"],
+      "@shadcn/styles/*": ["libs/shadcn/src/styles/*"],
+      "@xrpl/react": ["libs/xrpl-react/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -83,3 +83,30 @@ Spring Boot application setup with Postgres backend and Angular front end
 2. Delete src folder: `rm -rf libs/shadcn/src`
 3. Make `ui` & `styles` directories: `mkdir libs/shadcn/ui & mkdir libs/shadcn/styles`
 4. Make `global.css` file: `touch libs/shadcn/styles/global.css`
+5. Change `shadcn` path in `tsconfig.base.json` to this: `"@shadcn/ui": ["libs/shadcn/src/ui"]`
+6. Install `tailwind` libraries: `npm i tailwindcss-animate class-variance-authority clsx tailwind-merge @radix-ui/react-icons`
+7. Add tailwind to `shadcn` library & your application: `npx nx g @nx/react:setup-tailwind`
+8. Add [styles](https://ui.shadcn.com/docs/installation/manual#configure-styles) from `shadcn` docs to global.css.
+9. Add ref to shadcn tailwind inside your app.
+
+```
+const { createGlobPatternsForDependencies } = require('@nx/react/tailwind');
+const TailwindConfig = require('../../libs/shadcn/tailwind.config'); // 1: ADD THIS
+const { join } = require('path');
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  ...TailwindConfig, // 2: ADD THIS
+ content: [
+    ...TailwindConfig.content, // 3: ADD THIS
+   join(__dirname, '{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}'),
+   ...createGlobPatternsForDependencies(__dirname),
+ ],
+  theme: { // 4: REMOVE THIS
+    extend: {},
+  },
+  plugins: [], // 5: REMOVE THIS
+```
+
+10. Add another path to `tsconfig.base.json`: `"@shadcn/styles/*": ["libs/shadcn/src/styles/*"],`
+11. Import `global.css` into app `styles.css`: `import '@shadcn/styles/global.css';`
