@@ -83,11 +83,10 @@ Spring Boot application setup with Postgres backend and Angular front end
 2. Delete src folder: `rm -rf libs/shadcn/src`
 3. Make `ui` & `styles` directories: `mkdir libs/shadcn/ui & mkdir libs/shadcn/styles`
 4. Make `global.css` file: `touch libs/shadcn/styles/global.css`
-5. Change `shadcn` path in `tsconfig.base.json` to this: `"@shadcn/ui": ["libs/shadcn/src/ui"]`
-6. Install `tailwind` libraries: `npm i tailwindcss-animate class-variance-authority clsx tailwind-merge @radix-ui/react-icons`
-7. Add tailwind to `shadcn` library & your application: `npx nx g @nx/react:setup-tailwind`
-8. Add [styles](https://ui.shadcn.com/docs/installation/manual#configure-styles) from `shadcn` docs to global.css.
-9. Add ref to shadcn tailwind inside your app.
+5. Install `tailwind` libraries: `npm i tailwindcss-animate class-variance-authority clsx tailwind-merge @radix-ui/react-icons`
+6. Add tailwind to `shadcn` library & your application: `npx nx g @nx/react:setup-tailwind`
+7. Add [styles](https://ui.shadcn.com/docs/installation/manual#configure-styles) from `shadcn` docs to global.css.
+8. Add ref to shadcn tailwind inside your app.
 
 ```
 const { createGlobPatternsForDependencies } = require('@nx/react/tailwind');
@@ -108,5 +107,37 @@ module.exports = {
   plugins: [], // 5: REMOVE THIS
 ```
 
-10. Add another path to `tsconfig.base.json`: `"@shadcn/styles/*": ["libs/shadcn/src/styles/*"],`
-11. Import `global.css` into app `styles.css`: `import '@shadcn/styles/global.css';`
+9. Add another path to `tsconfig.base.json`: `"@shadcn/styles/*": ["libs/shadcn/src/styles/*"],`
+10. Import `global.css` into app `styles.css`: `import '@shadcn/styles/global.css';`
+11. Add merge util to shadcn library
+12. Change and add `shadcn` paths in `tsconfig.base.json`:
+
+```
+"@shadcn/ui": ["libs/shadcn/src/ui"],
+"@shadcn/styles/*": ["libs/shadcn/styles/*"],
+"@shadcn/lib": ["libs/shadcn/lib/index.ts"],
+```
+
+13. Create `components.json` in the root of the monorepo:
+
+```
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "libs/shadcn/tailwind.config.js",
+    "css": "libs/shadcn/styles/global.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@shadcn/ui",
+    "ui": "@shadcn/ui",
+    "utils": "@shadcn/lib"
+  }
+}
+```
+
+## Nx Shadcn Installation
