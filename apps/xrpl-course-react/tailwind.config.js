@@ -1,17 +1,24 @@
 const { createGlobPatternsForDependencies } = require('@nx/react/tailwind');
 const { join } = require('path');
 
-const TailwindConfig = require('../../libs/shadcn/tailwind.config');
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  ...TailwindConfig,
+  presets: [require('../../libs/shadcn/tailwind.config.js')],
   content: [
-    ...TailwindConfig.content,
     join(
       __dirname,
       '{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}'
     ),
     ...createGlobPatternsForDependencies(__dirname),
+    // Manual path addition - this was crucial!
+    join(__dirname, '../../libs/shadcn/src/**/*.{ts,tsx}'),
+  ],
+  theme: {
+    extend: {
+      // Add any app-specific theme extensions here
+    },
+  },
+  plugins: [
+    // Add any app-specific plugins here
   ],
 };

@@ -79,65 +79,8 @@ Spring Boot application setup with Postgres backend and Angular front end
 
 ## Nx Shadcn Installation
 
-1. Generate shadcn library: `npx nx generate @nx/react:library --directory=libs/shadcn --bundler=vite --name=shadcn --compiler=swc --no-interactive`
-2. Delete src folder: `rm -rf libs/shadcn/src`
-3. Make `ui` & `styles` directories: `mkdir libs/shadcn/ui & mkdir libs/shadcn/styles`
-4. Make `global.css` file: `touch libs/shadcn/styles/global.css`
-5. Install `tailwind` libraries: `npm i tailwindcss-animate class-variance-authority clsx tailwind-merge @radix-ui/react-icons`
-6. Add tailwind to `shadcn` library & your application: `npx nx g @nx/react:setup-tailwind`
-7. Add [styles](https://ui.shadcn.com/docs/installation/manual#configure-styles) from `shadcn` docs to global.css.
-8. Add ref to shadcn tailwind inside your app.
+1. Follow Article [Building a Scalable React Monorepo with NX and Shadcn/UI: A Complete Implementation Guide](https://medium.com/@sakshijaiswal0310/building-a-scalable-react-monorepo-with-nx-and-shadcn-ui-a-complete-implementation-guide-96c2bb1b42e8)
 
-```
-const { createGlobPatternsForDependencies } = require('@nx/react/tailwind');
-const TailwindConfig = require('../../libs/shadcn/tailwind.config'); // 1: ADD THIS
-const { join } = require('path');
+## Shadcn Component Install
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  ...TailwindConfig, // 2: ADD THIS
- content: [
-    ...TailwindConfig.content, // 3: ADD THIS
-   join(__dirname, '{src,pages,components,app}/**/*!(*.stories|*.spec).{ts,tsx,html}'),
-   ...createGlobPatternsForDependencies(__dirname),
- ],
-  theme: { // 4: REMOVE THIS
-    extend: {},
-  },
-  plugins: [], // 5: REMOVE THIS
-```
-
-9. Add another path to `tsconfig.base.json`: `"@shadcn/styles/*": ["libs/shadcn/src/styles/*"],`
-10. Import `global.css` into app `styles.css`: `import '@shadcn/styles/global.css';`
-11. Add merge util to shadcn library
-12. Change and add `shadcn` paths in `tsconfig.base.json`:
-
-```
-"@shadcn/ui": ["libs/shadcn/src/ui"],
-"@shadcn/styles/*": ["libs/shadcn/styles/*"],
-"@shadcn/lib": ["libs/shadcn/lib/index.ts"],
-```
-
-13. Create `components.json` in the root of the monorepo:
-
-```
-{
-  "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "new-york",
-  "rsc": false,
-  "tsx": true,
-  "tailwind": {
-    "config": "libs/shadcn/tailwind.config.js",
-    "css": "libs/shadcn/styles/global.css",
-    "baseColor": "slate",
-    "cssVariables": true
-  },
-  "aliases": {
-    "components": "@shadcn/ui",
-    "ui": "@shadcn/ui",
-    "utils": "@shadcn/lib"
-  }
-}
-```
-
-## Nx Shadcn Installation
+1. `npx shadcn@latest add <component-name>`

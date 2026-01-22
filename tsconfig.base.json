@@ -15,9 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@shadcn/ui": ["libs/shadcn/src/ui"],
-      "@shadcn/styles/*": ["libs/shadcn/styles/*"],
-      "@shadcn/lib": ["libs/shadcn/lib/index.ts"],
+      "@shadcn/components": ["libs/shadcn/src/components"],
+      "@shadcn/styles/*": ["libs/shadcn/src/styles/*"],
+      "@shadcn/utils": ["libs/shadcn/src/lib/index.ts"],
       "@xrpl/react": ["libs/xrpl-react/src/index.ts"]
     }
   },
