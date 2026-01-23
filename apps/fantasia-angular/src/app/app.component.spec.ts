@@ -1,6 +1,5 @@
 import { APP_BASE_HREF } from '@angular/common';
 import { createComponentFactory, Spectator } from '@ngneat/spectator';
-
 import { provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { provideTranslateService } from '@ngx-translate/core';
@@ -10,10 +9,8 @@ import { provideStore } from '@ngxs/store';
 import { AppComponent } from './app.component';
 import { AppComponentModule } from './app.module';
 import { StateApp } from './state';
-
 describe('AppComponent', () => {
   let spectator: Spectator<AppComponent>;
-
   const createComponent = createComponentFactory({
     component: AppComponent,
     imports: [AppComponentModule],
@@ -30,9 +27,7 @@ describe('AppComponent', () => {
     ],
     declareComponent: false,
   });
-
   beforeEach(() => (spectator = createComponent()));
-
   it('should create', () => {
     expect(spectator.component).toBeTruthy();
   });

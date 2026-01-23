@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   HostBinding,
@@ -15,7 +15,7 @@ import { ActionAppNavToChild } from '../../state';
 
 @Component({
   selector: 'app-menu-item',
-  imports: [CommonModule, TranslateModule],
+  imports: [TranslateModule],
   templateUrl: './menu-item.component.html',
   styleUrls: ['./menu-item.component.scss'],
 })

@@ -99,7 +99,8 @@
           "node_modules/normalize.css/normalize.css",
           "styles/blueprint/reset.scss",
           "apps/fantasia-angular/src/styles.scss"
-        ]
+        ],
+        "tsConfig": "apps/fantasia-angular/tsconfig.spec.json"
       }
     },
     "serve-static": {
