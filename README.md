@@ -83,4 +83,9 @@ Spring Boot application setup with Postgres backend and Angular front end
 
 ## Shadcn Component Install
 
-1. `npx shadcn@latest add <component-name>`
+1. `npx shadcn@latest add <component>`
+
+## Shadcn Version Errors
+
+1. Version 3.7.0 has errors
+2. Use `npx shadcn@3.6.3 add <component>` until fixed
