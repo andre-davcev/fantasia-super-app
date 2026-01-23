@@ -1,5 +1,4 @@
 export * from '../src/styles/globals.css';
 
+export * from './components';
 export * from './lib';
-
-export * from './components/ui/button';

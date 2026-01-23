@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "bootRun": {
+      "executor": "@nx/gradle:run-task",
+      "options": {
+        "task": "bootRun",
+        "cache": false
+      }
+    }
+  }
+}
