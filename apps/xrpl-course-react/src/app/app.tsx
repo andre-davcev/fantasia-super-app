@@ -7,7 +7,7 @@ import { Button } from '@shadcn/components';
 export function App() {
   return (
     <div>
-            <Button variant="destructive">
+      <Button variant="destructive">
         Primary Button
       </Button>
       <NxWelcome title="xrpl-course-react" />

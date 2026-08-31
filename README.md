@@ -12,7 +12,7 @@ Although this is a personal project, you should be able to replicate my environm
 
 ## Running Fantasia locally
 
-Run `npm run fan-serve`. Then navigate to (localhost:4201)[http://localhost:4201/]. Enjoy!
+Run `fantasia-angular-serve`. Then navigate to (localhost:4300)[http://localhost:4300/]. Enjoy!
 
 ## Thanks for checking out my code!
 
